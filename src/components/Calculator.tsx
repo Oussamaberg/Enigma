@@ -34,7 +34,7 @@ const modalClickHandler = () => {
 
   return (
     <div>
-      <h1> I am a calculator</h1>
+   
       <div className=" w-screen sm:w-96 h-screen py-20 ">
         <div className="h-40"></div>
         <div className="grid grid-cols-4 justify-items-center gap-1 border-b-2 border-gray-500 p-5 py-5 h-20 pb-24">

@@ -10,7 +10,7 @@ function Menu() {
       transition: {
         
         duration: 0.5,
-        delayChildren: 0.5,
+        delayChildren: 0.3,
         staggerChildren: 0.1,
       },
     },
@@ -22,7 +22,7 @@ function Menu() {
   };
 
   const item = {
-    hidden: { opacity: 0 },
+    hidden: {  opacity:0},
     show: { opacity: 1 },
   };
 
