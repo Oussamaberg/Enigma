@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-function Settings({toggleSettings}) {
+function Settings({toggleSettings, darkMode, hardMode}) {
   const container = {
     hidden: {
       opacity: 0,
@@ -46,7 +46,7 @@ function Settings({toggleSettings}) {
         <span>Hard Mode</span>
         <span>
           <label className="relative inline-flex items-center cursor-pointer">
-            <input type="checkbox" value="" className="sr-only peer" />
+            <input onChange={hardMode} type="checkbox" value="" className="sr-only peer" />
             <div
               className="w-11 h-6 bg-gray-400 dark:bg-gray-400 peer-focus:outline-none  rounded-full peer  peer-checked:after:translate-x-full
                after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-100 dark:after:bg-slate-100 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all
@@ -59,7 +59,7 @@ function Settings({toggleSettings}) {
         <span>Dark Theme</span>
         <span>
           <label className="relative inline-flex items-center cursor-pointer">
-            <input type="checkbox" value="" className="sr-only peer" />
+            <input onChange={darkMode} type="checkbox" value="" className="sr-only peer" />
             <div
               className="w-11 h-6 bg-gray-400 dark:bg-gray-400 peer-focus:outline-none  rounded-full peer  peer-checked:after:translate-x-full
                after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-100 dark:after:bg-slate-100 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all
