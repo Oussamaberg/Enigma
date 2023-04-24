@@ -1,16 +1,18 @@
-const level_2 = (number, index, setIndex, array, setArray) => {
+const level_2 = (number, index, setIndex, array, setArray,gameStats, setGameStats) => {
   if (index === 4) {
     array.length = 0;
     setIndex(0);
+    setGameStats({...gameStats, tryNum:gameStats.tryNum+1})
   }
   setArray([...array, number % 10]);
   setIndex((index) => index + 1);
 };
 
-const level_1 = (number, index, setIndex, array, setArray) => {
+const level_1 = (number, index, setIndex, array, setArray,gameStats, setGameStats) => {
   if (index === 4) {
     array.length = 0;
     setIndex(0);
+    setGameStats({...gameStats, tryNum:gameStats.tryNum+1})
   }
 
   setArray([...array, number]);

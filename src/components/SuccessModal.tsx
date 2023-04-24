@@ -1,11 +1,9 @@
 import { motion } from "framer-motion";
 
-function SuccessModal({modalClickHandler}) {
+function SuccessModal({ succesModal}) {
   const container = {
     hidden: { opacity: 0 },
     show: {
-
-
       opacity: 1,
       transition: {
         duration: 0.5,
@@ -36,12 +34,12 @@ function SuccessModal({modalClickHandler}) {
       aria-labelledby="modal-title"
       role="dialog"
       aria-modal="true"
-      onClick={modalClickHandler}
+      onClick={succesModal}
     >
-      <div  className="fixed inset-0 bg-gray-500 bg-opacity-50 w-screen h-screen transition-opacity"></div>
+      
       <div className="fixed inset-0 z-10 overflow-y-auto mt-60">
         <div className="flex place-content-center p-4 text-center sm:items-center sm:p-0">
-          <div className="bg-white dark:bg-gray-800 h-64 w-2/3 sm:w-6/12 md:w-4/12 lg:w-3/12 border-1 rounded-lg flex flex-col  justify-center items-center">
+          <div className="bg-white dark:bg-gray-800 h-64 w-2/3 sm:w-6/12 md:w-4/12 lg:w-3/12 border-1 rounded-lg flex flex-col  justify-center items-center shadow-2xl">
             <motion.div  variants={item} className=" bg-emerald-400 border rounded-full p-2 ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -59,11 +57,13 @@ function SuccessModal({modalClickHandler}) {
               </svg>
             </motion.div>
             <motion.div  variants={item} className="h-32 p-4">
+              
               <h3 className="p-2 font-bold text-2xl">Good Job</h3>
+
               <p>Congratulation you have unlocked the next level 🎉</p>
             </motion.div>
             <motion.div  variants={item} className="">
-              <button onClick={modalClickHandler} className=" bg-gradient-to-r from-emerald-500 to-green-500 hover:opacity-50 hover:scale-x-95 w-72 px-4 ring-1  rounded-md text-3xl shadow-xl transition ease-out duration-500">
+              <button onClick={succesModal} className=" bg-gradient-to-r from-emerald-500 to-green-500 hover:opacity-50 hover:scale-x-95 w-full  ring-1  rounded-md text-3xl shadow-xl transition ease-out duration-500 p-3">
                 Next
               </button>
             </motion.div>

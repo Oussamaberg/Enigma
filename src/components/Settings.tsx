@@ -22,7 +22,7 @@ function Settings({toggleSettings, darkMode, hardMode}) {
       initial="hidden"
       animate="show"
       exit="exit"
-      className="flex flex-col  absolute  w-screen h-3/5 sm:w-3/5 md:w-2/4 lg:w-2/5 bg-white dark:bg-slate-900 opacity-95 divide-y divide-solide dark:divide-dashed"
+      className="flex flex-col  absolute  w-screen h-3/5 sm:w-3/5 md:w-2/4 lg:w-2/5 bg-white dark:bg-slate-900 opacity-95 divide-y divide-solide dark:divide-dashed shadow-2xl"
     >
       <div className="grid justify-items-end pr-5  pt-5 pb-32">
         <button onClick={toggleSettings}>
