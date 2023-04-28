@@ -5,40 +5,52 @@ import SuccessModal from "./SuccessModal";
 import DigitDisplay from "./DigitDisplay";
 import CalculatorButton from "./CalculatorButton";
 
-function Calculator({ succesModal }) {
+function Calculator() {
   const [index, setIndex] = useState(4);
   const [array, setArray] = useState([0, 0, 0, 0]);
   const [level, setLevel] = useState(0);
+  // show/Hide success modal
+  const [successModal, setSuccessModal] = useState(false);
   const [gameStats, setGameStats] = useState({ time: Date.now(), tryNum: 0 });
 
   const goal = [1, 3, 3, 7];
   let tmpGameStates = {};
-  let calculatedTime;
+
+  const resetGameStats = () => {
+    tmpGameStates = {
+      time: Date.now(),
+      tryNum: 0,
+    };
+    setGameStats((obj) => ({
+      ...obj,
+      ...tmpGameStates,
+    }));
+  };
+
+  const ToggleSuccessModal = () => {
+    setSuccessModal(!successModal);
+    if (successModal == true) resetGameStats();
+  };
 
   const gateway = (e) => {
     var number = parseInt(e.target.value);
-    levels[level].mecanics(number, index, setIndex, array, setArray,gameStats, setGameStats);
+    levels[level].mecanics(
+      number,
+      index,
+      setIndex,
+      array,
+      setArray,
+      gameStats,
+      setGameStats
+    );
   };
 
   useEffect(() => {
     if (array.toString() == goal.toString()) {
-      succesModal();
+      ToggleSuccessModal();
       setLevel((level) => level + 1);
       array.length = 0;
-      calculatedTime = new Date(Date.now() - gameStats.time);
-      console.log(
-        calculatedTime.getMinutes() + ":" + calculatedTime.getSeconds()
-      );
-      tmpGameStates = {
-        time: Date.now(),
-        tryNum: 0,
-      };
-      setGameStats((obj) => ({
-        ...obj,
-        ...tmpGameStates,
-      }));
     }
-    
   }, [[array]]);
   console.log(gameStats);
 
@@ -57,6 +69,9 @@ function Calculator({ succesModal }) {
           ))}
         </div>
       </div>
+      {successModal && (
+        <SuccessModal gameStats={gameStats} succesModal={ToggleSuccessModal} />
+      )}
     </>
   );
 }

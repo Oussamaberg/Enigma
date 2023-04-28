@@ -17,8 +17,8 @@ function App() {
   const [darkTheme, SetDarkMode] = useState(false);
   // Activate/Deactivate hard mode
   const [hardMode, setHardMode] = useState(false);
-  // show/Hide success modal
-  const [successModal, setSuccessModal] = useState(false);
+ 
+  let allGameStats;
   const toggleHelp = () => {
     if (settings == true) {
       setSettings(false);
@@ -37,7 +37,6 @@ function App() {
       setSuccessModal(false);
     }
     setSettings(!settings);
-    console.log(successModal)
   };
 
   const toggledarkTheme = () => {
@@ -46,21 +45,17 @@ function App() {
   };
   const toggleHardMode = () => {
     setHardMode(!hardMode);
-    console.log(hardMode);
   };
-  const ToggleSuccessModal = () => {
-    setSuccessModal(!successModal)
-    console.log("togle sucsses" + successModal)
-  }
+ 
 
   return (
     <div className={darkTheme && "dark"}>
       <div className="  min-h-screen bg-slate-50 dark:bg-black dark:text-white ">
         <Navbar toggleHelp={toggleHelp} toggleSettings={toggleSettings} />
         <div className="  relative flex min-h-screen justify-center items-center">
-          <Calculator succesModal={ToggleSuccessModal}  />
+          <Calculator  />
           <AnimatePresence>
-          {successModal && <SuccessModal succesModal={ToggleSuccessModal} />}
+         
             {help && <Help toggleHelp={toggleHelp} />}
 
             {settings && (
