@@ -18,14 +18,13 @@ function App() {
   // Activate/Deactivate hard mode
   const [hardMode, setHardMode] = useState(false);
  
-  let allGameStats;
   const toggleHelp = () => {
     if (settings == true) {
       setSettings(false);
     }
-    if (successModal == true) {
-      setSuccessModal(false);
-    }
+    //if (successModal == true) {
+      //setSuccessModal(false);
+   // }
     setHelp(!help);
   };
 
@@ -33,9 +32,9 @@ function App() {
     if (help == true) {
       setHelp(false);
     }
-    if (successModal == true) {
-      setSuccessModal(false);
-    }
+    //if (successModal == true) {
+    //  setSuccessModal(false);
+    //}
     setSettings(!settings);
   };
 
