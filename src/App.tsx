@@ -3,7 +3,7 @@ import Headings from "./components/Headings";
 import Navbar from "./components/Navbar";
 import Calculator from "./components/Calculator";
 import Help from "./components/Help";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Settings from "./components/Settings";
 import { AnimatePresence } from "framer-motion";
 import SuccessModal from "./components/SuccessModal";
@@ -17,7 +17,16 @@ function App() {
   const [darkTheme, SetDarkMode] = useState(false);
   // Activate/Deactivate hard mode
   const [hardMode, setHardMode] = useState(false);
- 
+  var theme = sessionStorage.getItem("theme");
+  var gameMode = sessionStorage.getItem("gameMode");
+  useEffect(() => {
+    if (theme != null){
+      SetDarkMode((theme == "dark"));
+    }
+    if (gameMode != null){
+      setHardMode((gameMode == "hard"));
+    }
+  },[])
   const toggleHelp = () => {
     if (settings == true) {
       setSettings(false);
@@ -39,11 +48,16 @@ function App() {
   };
 
   const toggledarkTheme = () => {
+    var theme;
     SetDarkMode(!darkTheme);
-    console.log(darkTheme);
+    theme = darkTheme ? "light" : "dark" 
+    sessionStorage.setItem("theme", theme);
   };
   const toggleHardMode = () => {
+    var gameMode;
     setHardMode(!hardMode);
+    gameMode = hardMode ? "easy" : "hard" 
+    sessionStorage.setItem("gameMode", gameMode);
   };
  
 
@@ -59,6 +73,8 @@ function App() {
 
             {settings && (
               <Settings
+                hardModeChecked = {hardMode}
+                darkModeChecked = {darkTheme}
                 toggleSettings={toggleSettings}
                 darkMode={toggledarkTheme}
                 hardMode={toggleHardMode}

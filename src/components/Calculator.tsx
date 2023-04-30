@@ -12,7 +12,7 @@ function Calculator() {
   // show/Hide success modal
   const [successModal, setSuccessModal] = useState(false);
   const [gameStats, setGameStats] = useState({ time: Date.now(), tryNum: 0 });
-
+  var gameLevel = sessionStorage.getItem("gameLevel");
   const goal = [1, 3, 3, 7];
   let tmpGameStates = {};
 
@@ -49,10 +49,11 @@ function Calculator() {
     if (array.toString() == goal.toString()) {
       ToggleSuccessModal();
       setLevel((level) => level + 1);
+      sessionStorage.setItem("gameLevel", level.toString());
       array.length = 0;
     }
   }, [[array]]);
-  console.log(gameStats);
+  console.log("gameLevel:" + gameLevel+ ", level:"+level.toString());
 
   return (
     <>
