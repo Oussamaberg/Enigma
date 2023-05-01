@@ -28,6 +28,38 @@ const levels = [
     digitArray: [77, 87, 97, 63, 47, 51, 31, 21, 11, 10],
     mecanics: level_2,
   },
+  {
+    digitArray: [77, 87, 97, 63, 47, 51, 31, 21, 11, 10],
+    mecanics: level_2,
+  },
+  {
+    digitArray: [77, 87, 97, 63, 47, 51, 31, 21, 11, 10],
+    mecanics: level_2,
+  },
+   {
+    digitArray: [77, 87, 97, 63, 47, 51, 31, 21, 11, 10],
+    mecanics: level_2,
+  },
+  {
+    digitArray: [77, 87, 97, 63, 47, 51, 31, 21, 11, 10],
+    mecanics: level_2,
+  },
+  {
+    digitArray: [77, 87, 97, 63, 47, 51, 31, 21, 11, 10],
+    mecanics: level_2,
+  },
+  {
+    digitArray: [77, 87, 97, 63, 47, 51, 31, 21, 11, 10],
+    mecanics: level_2,
+  },
+  {
+    digitArray: [77, 87, 97, 63, 47, 51, 31, 21, 11, 10],
+    mecanics: level_2,
+  },
+  {
+    digitArray: [77, 87, 97, 63, 47, 51, 31, 21, 11, 10],
+    mecanics: level_2,
+  },
 ];
 
 export { levels };

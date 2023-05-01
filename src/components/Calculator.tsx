@@ -4,20 +4,28 @@ import { levels } from "../utils/Levels";
 import SuccessModal from "./SuccessModal";
 import DigitDisplay from "./DigitDisplay";
 import CalculatorButton from "./CalculatorButton";
+import successSound from "../assets/sound/success.wav";
+import Progress from "./Progress";
 
-function Calculator() {
+function Calculator({userLevel}) {
   const [index, setIndex] = useState(4);
   const [array, setArray] = useState([0, 0, 0, 0]);
   const [level, setLevel] = useState(0);
   // show/Hide success modal
   const [successModal, setSuccessModal] = useState(false);
   const [gameStats, setGameStats] = useState({ time: Date.now(), tryNum: 0 });
-  var gameLevel = sessionStorage.getItem("gameLevel");
   const goal = [1, 3, 3, 7];
-  let tmpGameStates = {};
+  
+  
+
+  useEffect(()=>{
+    if (userLevel != null){
+      setLevel(parseInt(userLevel));
+    }
+  },[])
 
   const resetGameStats = () => {
-    tmpGameStates = {
+    var tmpGameStates = {
       time: Date.now(),
       tryNum: 0,
     };
@@ -44,24 +52,31 @@ function Calculator() {
       setGameStats
     );
   };
+  const audioPlayer = () => {
+    const audio = new Audio(successSound);
 
+    audio.play();
+  
+  }
   useEffect(() => {
     if (array.toString() == goal.toString()) {
+      audioPlayer();
       ToggleSuccessModal();
       setLevel((level) => level + 1);
-      sessionStorage.setItem("gameLevel", level.toString());
       array.length = 0;
+      sessionStorage.setItem("userLevel", (level+1).toString());
     }
   }, [[array]]);
-  console.log("gameLevel:" + gameLevel+ ", level:"+level.toString());
 
+  console.log("my level:" +level);
   return (
     <>
+    <Progress userLevel={level} />
       <div className=" w-screen sm:w-96 h-screen py-20 ">
         <div className="h-40"></div>
         <div className="grid grid-cols-4 justify-items-center gap-1 border-b-2 border-gray-500 p-5 py-5 h-20 pb-24">
-          {array.map((digit) => (
-            <DigitDisplay digit={digit} i={index} />
+          {array.map((digit,j) => (
+            <DigitDisplay digit={digit}  i={j} />
           ))}
         </div>
         <div className="grid grid-cols-3 gap-2 mt-10  px-4">

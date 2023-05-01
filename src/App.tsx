@@ -6,7 +6,7 @@ import Help from "./components/Help";
 import { useEffect, useState } from "react";
 import Settings from "./components/Settings";
 import { AnimatePresence } from "framer-motion";
-import SuccessModal from "./components/SuccessModal";
+import Progress from "./components/Progress";
 
 function App() {
   // Show/Hide help window
@@ -17,23 +17,27 @@ function App() {
   const [darkTheme, SetDarkMode] = useState(false);
   // Activate/Deactivate hard mode
   const [hardMode, setHardMode] = useState(false);
+
   var theme = sessionStorage.getItem("theme");
   var gameMode = sessionStorage.getItem("gameMode");
+  var userLevel = sessionStorage.getItem("userLevel");
   useEffect(() => {
-    if (theme != null){
-      SetDarkMode((theme == "dark"));
+    if (theme != null) {
+      SetDarkMode(theme == "dark");
     }
-    if (gameMode != null){
-      setHardMode((gameMode == "hard"));
+    if (gameMode != null) {
+      setHardMode(gameMode == "hard");
     }
-  },[])
+
+  }, []);
+  
   const toggleHelp = () => {
     if (settings == true) {
       setSettings(false);
     }
     //if (successModal == true) {
-      //setSuccessModal(false);
-   // }
+    //setSuccessModal(false);
+    // }
     setHelp(!help);
   };
 
@@ -50,31 +54,30 @@ function App() {
   const toggledarkTheme = () => {
     var theme;
     SetDarkMode(!darkTheme);
-    theme = darkTheme ? "light" : "dark" 
+    theme = darkTheme ? "light" : "dark";
     sessionStorage.setItem("theme", theme);
   };
   const toggleHardMode = () => {
     var gameMode;
     setHardMode(!hardMode);
-    gameMode = hardMode ? "easy" : "hard" 
+    gameMode = hardMode ? "easy" : "hard";
     sessionStorage.setItem("gameMode", gameMode);
   };
- 
 
   return (
-    <div className={darkTheme && "dark"}>
-      <div className="  min-h-screen bg-slate-50 dark:bg-black dark:text-white ">
+    <div className={darkTheme ? "dark" : ""}>
+      <div className="  min-h-screen bg-[url(')] dark:bg-black dark:text-white ">
         <Navbar toggleHelp={toggleHelp} toggleSettings={toggleSettings} />
         <div className="  relative flex min-h-screen justify-center items-center">
-          <Calculator  />
+          
+          <Calculator userLevel={userLevel} />
           <AnimatePresence>
-         
             {help && <Help toggleHelp={toggleHelp} />}
 
             {settings && (
               <Settings
-                hardModeChecked = {hardMode}
-                darkModeChecked = {darkTheme}
+                hardModeChecked={hardMode}
+                darkModeChecked={darkTheme}
                 toggleSettings={toggleSettings}
                 darkMode={toggledarkTheme}
                 hardMode={toggleHardMode}

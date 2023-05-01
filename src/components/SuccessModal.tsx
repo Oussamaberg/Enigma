@@ -27,7 +27,6 @@ function SuccessModal({ gameStats, succesModal }) {
 
   useEffect(() => {
     setTime(new Date(Date.now() - gameStats.time));
-    console.log(gameStats.tryNum);
   }, []);
 
   const formatTime = () => {
