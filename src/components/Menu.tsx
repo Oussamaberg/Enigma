@@ -10,8 +10,8 @@ function Menu() {
       transition: {
         
         duration: 0.5,
-        delayChildren: 0.3,
-        staggerChildren: 0.1,
+        delayChildren: 0.1,
+        
       },
     },
 
@@ -21,10 +21,7 @@ function Menu() {
     },
   };
 
-  const item = {
-    hidden: {  opacity:0},
-    show: { opacity: 1 },
-  };
+  
 
   return (
     <motion.div
@@ -32,7 +29,7 @@ function Menu() {
       initial="hidden"
       animate="show"
       exit="exit"
-      className="absolute  bg-white text-gray-500 w-screen sm:w-96 pl-5 left-0 top-0 dark:bg-slate-600 dark:text-yellow-50 "
+      className="absolute z-10 backdrop-blur-sm bg-white/30 bg-white text-gray-500 w-screen sm:w-96 pl-5 left-0 top-0  dark:text-yellow-50 "
     >
       <div className=" font-mono text-2xl uppercase py-5 flex place-content-center ">
         {" "}
@@ -41,7 +38,7 @@ function Menu() {
       <ul  className="text-justify">
         <motion.li
           className="py-2 border-r-4 hover:border-black cursor-pointer hover:font-bold flex items-center transition ease-linear duration-500 "
-          variants={item}
+          
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +58,7 @@ function Menu() {
         </motion.li>
         <motion.li
           className="py-2 border-r-4 hover:border-black flex cursor-pointer  hover:font-bold  items-center transition ease-linear duration-500 "
-          variants={item}
+          
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -81,7 +78,7 @@ function Menu() {
         </motion.li>
         <motion.li
           className="py-2 border-r-4 hover:border-black cursor-pointer hover:font-bold flex items-center transition ease-linear duration-500 "
-          variants={item}
+        
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -101,7 +98,7 @@ function Menu() {
         </motion.li>
         <motion.li
           className="py-2 border-r-4 hover:border-black cursor-pointer hover:font-bold flex items-center transition ease-linear duration-500  "
-          variants={item}
+          
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
