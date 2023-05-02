@@ -21,6 +21,7 @@ function App() {
   var theme = sessionStorage.getItem("theme");
   var gameMode = sessionStorage.getItem("gameMode");
   var userLevel = sessionStorage.getItem("userLevel");
+  
   useEffect(() => {
     if (theme != null) {
       SetDarkMode(theme == "dark");

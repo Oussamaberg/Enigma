@@ -56,6 +56,8 @@ function SuccessModal({ gameStats, succesModal }) {
     var starsArray = [];
     var n_try = gameStats.tryNum;
     var score = maxScore - (time / 1000) * 0.3 * n_try;
+    score = score < 0 ? 0 : score;
+    sessionStorage.setItem("userScore", score.toString());
     var stars = parseInt(score / 20);
     for (var i = 0; i < stars; i++) {
       starsArray.push(i);
@@ -79,7 +81,7 @@ function SuccessModal({ gameStats, succesModal }) {
       >
         <div className="fixed inset-0 z-10 overflow-y-auto mt-60">
           <div className="flex place-content-center p-4 text-center sm:items-center sm:p-0">
-            <div className="backdrop-blur-sm bg-white/30   h-max w-2/3 sm:w-6/12 md:w-4/12 lg:w-3/12 border-1 rounded-lg flex flex-col  justify-center items-center shadow-2xl p-10">
+            <div className="backdrop-blur-md bg-white/30   h-max w-screen sm:w-7/12 md:w-6/12 lg:w-4/12 border-1 rounded-lg flex flex-col  justify-center items-center shadow-2xl p-10">
               <motion.div
                 variants={item}
                 className=" bg-emerald-400 border rounded-full p-2 "
@@ -104,8 +106,8 @@ function SuccessModal({ gameStats, succesModal }) {
                   <span className=" bg-gradient-to-r w-40 rounded-xl p-2 font-mono text-4xl hover:bg-gradient-to-r hover:-translate-y-1 transition duration-1000 ">
                     Time {formatTime()}
                   </span>
-                  <span className=" rounded-xl p-2 font-mono text-4xl hover:-translate-y-1 transition duration-1000">
-                    Try {gameStats.tryNum}
+                  <span className=" flex flex-col rounded-xl p-2 font-mono text-4xl hover:-translate-y-1 transition duration-1000">
+                    <div>Try </div> <div>{gameStats.tryNum}</div>
                   </span>
                 </div>
                 <div className="flex justify-center">
