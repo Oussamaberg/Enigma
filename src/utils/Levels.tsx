@@ -25,7 +25,7 @@ const levels = [
     mecanics: level_1,
   },
   {
-    digitArray: [77, 87, 97, 63, 47, 51, 31, 21, 11, 10],
+    digitArray: [7, 8, 9, 6, 4, 5, 3, 2, 1, 0],
     mecanics: level_2,
   },
   {

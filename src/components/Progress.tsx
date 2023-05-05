@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import SareBox from "./ShareBox";
 
 function Progress({ userLevel }) {
   var userScore = sessionStorage.getItem("userScore");
   var [score, setScore] = useState(0);
   const progressBar = [0, 1, 2, 3, 4, 5, 6];
   const rankTitle= ["Iron", "Silver", "Gold", "Diamond", "Challenger", "Master", "Grand Master"]
+
   var rank = parseInt(userLevel);
   //const [rank, setRank] = useState(0);
   //setRank(parseInt(userLevel))
@@ -60,7 +62,7 @@ function Progress({ userLevel }) {
   };
 
   return (
-    <div className="absolute top-0 place-self-auto w-full h-20  flex flex-col justify-center  items-center ">
+    <div className="absolute top-4 place-self-auto w-full h-20  flex flex-col justify-center  items-center ">
       <div className=" font-mono text-sm p-1 mt-16 ">{rankTitle[rank]}</div>
       <div className="flex gap-4 justify-center items-center px-4">
         {progressBar.map((item) => setRankShape(item, rank))}
@@ -106,6 +108,9 @@ function Progress({ userLevel }) {
           Level: {userLevel}
         </div>
       </div>
+      
+      <SareBox title={rankTitle[rank]} userRank={rank} level={userLevel} score={score} />
+  
     </div>
   );
 }

@@ -64,8 +64,6 @@ function Calculator({ userLevel }) {
       sessionStorage.setItem("userLevel", (level + 1).toString());
     }
   }, [[array]]);
-
-  console.log("my try num:" + gameStats.tryNum);
   return (
     <>
       <Progress userLevel={level} />

@@ -29,7 +29,7 @@ function Menu() {
       initial="hidden"
       animate="show"
       exit="exit"
-      className="absolute z-10 backdrop-blur-sm bg-white/30 bg-white text-gray-500 w-screen sm:w-96 pl-5 left-0 top-0  dark:text-yellow-50 "
+      className="absolute z-10 backdrop-blur-md dark:backdrop-blur-sm dark:bg-white/30 bg-white/30 bg-white text-gray-500 w-screen h-screen sm:w-96 pl-5 left-0 top-0  dark:text-yellow-50 "
     >
       <div className=" font-mono text-2xl uppercase py-5 flex place-content-center ">
         {" "}
