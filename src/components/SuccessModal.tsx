@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import SareBox from "./ShareBox";
 
-function SuccessModal({ gameStats, succesModal }) {
+function SuccessModal({ gameStats, succesModal, level }) {
   const [time, setTime] = useState(new Date());
 
   const container = {
@@ -63,8 +63,11 @@ function SuccessModal({ gameStats, succesModal }) {
     for (var i = 0; i < stars; i++) {
       starsArray[i] = 1;
     }
-    return starsArray;
+    return [starsArray, stars];
   };
+ const [starsArray, stars] = scoreCalculator();
+  var msg = `Level: ${level - 1}\nTime: ${formatTime()}\nTry: ${gameStats.tryNum}\n${"🌟".repeat(stars)}`
+  console.log("text ti share:" + msg)
 
   const setStars = (item) =>{
     if (item == 1){
@@ -117,7 +120,7 @@ function SuccessModal({ gameStats, succesModal }) {
         aria-labelledby="modal-title"
         role="dialog"
         aria-modal="true"
-        onClick={succesModal}
+        
       >
         <div className="fixed inset-0 z-10 overflow-y-auto mt-60">
           <div className="flex place-content-center p-4 text-center sm:items-center sm:p-0">
@@ -150,11 +153,11 @@ function SuccessModal({ gameStats, succesModal }) {
                     <div>Try </div> <div>{gameStats.tryNum}</div>
                   </span>
                 </div>
-                <div className="flex justify-center">
-                  {scoreCalculator().map((item) => setStars(item))}
+                <div className="flex justify-center mt-5">
+                  {starsArray.map((item) => setStars(item))}
                 </div>
               </div>
-              
+              <SareBox textToShare={msg} />
               <motion.div variants={item} className="h-32">
                 <h3 className="p-2 font-bold text-2xl">Good Job</h3>
 

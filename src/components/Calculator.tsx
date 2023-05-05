@@ -97,7 +97,7 @@ function Calculator({ userLevel }) {
         </motion.div>
       </div>
       {successModal && (
-        <SuccessModal gameStats={gameStats} succesModal={ToggleSuccessModal} />
+        <SuccessModal gameStats={gameStats} succesModal={ToggleSuccessModal} level ={level}/>
       )}
     </>
   );

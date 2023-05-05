@@ -16,7 +16,9 @@ function Progress({ userLevel }) {
       setScore((score) => (score + parseInt(userScore)))
     }
   },[userScore])
-
+  var msg = `Rank: ${rankTitle[rank]}\nScore: ${score}\nLevel: ${userLevel} \n${"🔵".repeat(
+    rank
+  )}🟡`;
   console.log("my Total score: "+ score+" score:"+userScore)
   const setRankShape = (item, rank) => {
     if (item < rank) {
@@ -109,7 +111,7 @@ function Progress({ userLevel }) {
         </div>
       </div>
       
-      <SareBox title={rankTitle[rank]} userRank={rank} level={userLevel} score={score} />
+      <SareBox textToShare = {msg} />
   
     </div>
   );
