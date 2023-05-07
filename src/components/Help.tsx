@@ -22,7 +22,7 @@ function Help({toggleHelp}) {
     initial="hidden"
     animate="show"
     exit="exit"
-    className="flex flex-col absolute  w-screen h-3/5 sm:w-3/5 md:w-2/4 lg:w-2/5 backdrop-blur-sm bg-white/30  shadow-2xl ">
+    className="flex flex-col absolute  w-screen h-3/5 sm:w-3/5 md:w-2/4 lg:w-2/5 backdrop-blur-md bg-white/30  shadow-2xl ">
       <div className=" grid justify-items-end p-5">
         <button onClick={toggleHelp}>
       <svg
@@ -41,7 +41,7 @@ function Help({toggleHelp}) {
         </svg>
         </button>
       </div>
-      <div className=" grid justify-items-center pb-1 pt-20 font-serif text-4xl">
+      <div className=" grid justify-items-center pb-1  font-mono text-4xl">
         {" "}
         <h3>How To Play?</h3>
       </div>

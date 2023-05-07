@@ -6,11 +6,13 @@ import DigitDisplay from "./DigitDisplay";
 import CalculatorButton from "./CalculatorButton";
 import successSound from "../assets/sound/success.wav";
 import Progress from "./Progress";
+import LooseModal from "./LooseModal";
 
-function Calculator({ userLevel }) {
+function Calculator({ userLevel, hardMode }) {
   const [index, setIndex] = useState(4);
   const [array, setArray] = useState([0, 0, 0, 0]);
   const [level, setLevel] = useState(0);
+  const [looseGame, setLooseGame] = useState(false);
   // show/Hide success modal
   const [successModal, setSuccessModal] = useState(false);
   const [gameStats, setGameStats] = useState({ time: Date.now(), tryNum: 0 });
@@ -38,17 +40,27 @@ function Calculator({ userLevel }) {
     if (successModal == true) resetGameStats();
   };
 
+  const ToggleLooseModal = () => {
+    setLooseGame(!looseGame);
+    if (looseGame == true) resetGameStats();
+  };
+
   const gateway = (e) => {
+    var returnValue = "";
     var number = parseInt(e.target.value);
-    levels[level].mecanics(
+    returnValue = levels[level].mecanics(
       number,
       index,
       setIndex,
       array,
       setArray,
       gameStats,
-      setGameStats
+      setGameStats,
+      hardMode
     );
+    if (returnValue == "0") {
+      setLooseGame(true);
+    }
   };
   const audioPlayer = () => {
     const audio = new Audio(successSound);
@@ -63,7 +75,14 @@ function Calculator({ userLevel }) {
       setArray([0, 0, 0, 0]);
       sessionStorage.setItem("userLevel", (level + 1).toString());
     }
-  }, [[array]]);
+    if (looseGame) {
+      setArray([0, 0, 0, 0]);
+      setIndex(4);
+      //ToggleLooseModal();
+    }
+  }, [[array], looseGame]);
+
+  console.log(looseGame);
   return (
     <>
       <Progress userLevel={level} />
@@ -97,7 +116,17 @@ function Calculator({ userLevel }) {
         </motion.div>
       </div>
       {successModal && (
-        <SuccessModal gameStats={gameStats} succesModal={ToggleSuccessModal} level ={level}/>
+        <SuccessModal
+          gameStats={gameStats}
+          succesModal={ToggleSuccessModal}
+          level={level}
+        />
+      )}
+      {looseGame && (
+        <LooseModal
+          gameStats={gameStats}
+          looseModal={ToggleLooseModal}
+        />
       )}
     </>
   );

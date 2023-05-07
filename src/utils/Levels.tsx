@@ -1,4 +1,8 @@
-const level_2 = (number, index, setIndex, array, setArray,gameStats, setGameStats) => {
+const level_2 = (number, index, setIndex, array, setArray,gameStats, setGameStats, hardMode) => {
+  var maxAttempt = 4;
+  if(hardMode && (gameStats.tryNum >= maxAttempt)){
+    return "0"
+  }
   if (index === 4) {
     array.length = 0;
     setIndex(0);
@@ -6,6 +10,7 @@ const level_2 = (number, index, setIndex, array, setArray,gameStats, setGameStat
   }
   setArray([...array, number % 10]);
   setIndex((index) => index + 1);
+  return "1"
 };
 
 const level_1 = (number, index, setIndex, array, setArray,gameStats, setGameStats) => {

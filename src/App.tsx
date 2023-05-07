@@ -67,11 +67,11 @@ function App() {
 
   return (
     <div className={darkTheme ? "dark" : ""}>
-      <div className="  min-h-screen bg-[url(')] dark:bg-black dark:text-white ">
+      <div className="  min-h-screen  dark:bg-black dark:text-white ">
         <Navbar toggleHelp={toggleHelp} toggleSettings={toggleSettings} />
         <div className="  relative flex min-h-screen justify-center items-center">
           
-          <Calculator userLevel={userLevel} />
+          <Calculator userLevel={userLevel} hardMode={hardMode} />
           <AnimatePresence>
             {help && <Help toggleHelp={toggleHelp} />}
 
