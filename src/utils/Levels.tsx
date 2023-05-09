@@ -1,12 +1,12 @@
 const level_2 = (number, index, setIndex, array, setArray,gameStats, setGameStats, hardMode) => {
-  var maxAttempt = 4;
+  var maxAttempt = 6;
   if(hardMode && (gameStats.tryNum >= maxAttempt)){
     return "0"
   }
   if (index === 4) {
     array.length = 0;
     setIndex(0);
-    setGameStats({...gameStats, tryNum:gameStats.tryNum+1})
+    setGameStats({...gameStats, tryNum:gameStats.tryNum+1, tryLeft:gameStats.tryLeft-1})
   }
   setArray([...array, number % 10]);
   setIndex((index) => index + 1);
@@ -17,7 +17,7 @@ const level_1 = (number, index, setIndex, array, setArray,gameStats, setGameStat
   if (index === 4) {
     array.length = 0;
     setIndex(0);
-    setGameStats({...gameStats, tryNum:gameStats.tryNum+1})
+    setGameStats({...gameStats, tryNum:gameStats.tryNum+1,tryLeft:gameStats.tryLeft-1})
   }
 
   setArray([...array, number]);

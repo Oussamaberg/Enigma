@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import SareBox from "./ShareBox";
+import HardModeStats from "./HardModeStats";
 
 function Progress({ userLevel }) {
   var userScore = sessionStorage.getItem("userScore");
@@ -65,6 +66,7 @@ function Progress({ userLevel }) {
 
   return (
     <div className="absolute top-4 place-self-auto w-full h-20  flex flex-col justify-center  items-center ">
+      
       <div className=" font-mono text-sm p-1 mt-16 ">{rankTitle[rank]}</div>
       <div className="flex gap-4 justify-center items-center px-4">
         {progressBar.map((item) => setRankShape(item, rank))}

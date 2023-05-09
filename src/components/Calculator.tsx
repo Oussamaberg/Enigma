@@ -7,6 +7,7 @@ import CalculatorButton from "./CalculatorButton";
 import successSound from "../assets/sound/success.wav";
 import Progress from "./Progress";
 import LooseModal from "./LooseModal";
+import HardModeStats from "./HardModeStats";
 
 function Calculator({ userLevel, hardMode }) {
   const [index, setIndex] = useState(4);
@@ -15,7 +16,7 @@ function Calculator({ userLevel, hardMode }) {
   const [looseGame, setLooseGame] = useState(false);
   // show/Hide success modal
   const [successModal, setSuccessModal] = useState(false);
-  const [gameStats, setGameStats] = useState({ time: Date.now(), tryNum: 0 });
+  const [gameStats, setGameStats] = useState({ time: Date.now(), tryNum: 0, tryLeft:6 });
   const goal = [1, 3, 3, 7];
 
   useEffect(() => {
@@ -28,6 +29,7 @@ function Calculator({ userLevel, hardMode }) {
     var tmpGameStates = {
       time: Date.now(),
       tryNum: 0,
+      tryLeft:6
     };
     setGameStats((obj) => ({
       ...obj,
@@ -82,10 +84,12 @@ function Calculator({ userLevel, hardMode }) {
     }
   }, [[array], looseGame]);
 
-  console.log(looseGame);
+  console.log(gameStats);
   return (
     <>
       <Progress userLevel={level} />
+      <HardModeStats leftAttempts ={gameStats.tryLeft}/>
+      
       <div className=" w-screen sm:w-96 h-screen py-20 ">
         <div className="h-40"></div>
         <div className="grid grid-cols-4 justify-items-center gap-1 border-b-2 border-gray-500 p-5 py-5 h-20 pb-24">
