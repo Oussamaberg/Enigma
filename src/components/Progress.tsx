@@ -20,7 +20,7 @@ function Progress({ userLevel }) {
   var msg = `Rank: ${rankTitle[rank]}\nScore: ${score}\nLevel: ${userLevel} \n${"🔵".repeat(
     rank
   )}🟡`;
-  console.log("my Total score: "+ score+" score:"+userScore)
+
   const setRankShape = (item, rank) => {
     if (item < rank) {
       return (

@@ -51,8 +51,8 @@ import {
               : "absolute invisible"
           }
         >
-          <div className="h-0 w-0 border-x-8 border-x-transparent rotate-[270deg] border-b-[16px] border-b-slate-200"></div>
-          <span className="bg-slate-200 p-2 rounded-md text-xs font-thin w-20 shadow-lg">
+          <div className="h-0 w-0 border-x-8 border-x-transparent rotate-[270deg] border-b-[16px] border-b-slate-200 dark:border-b-slate-700"></div>
+          <span className="bg-slate-200 dark:bg-slate-700 p-2 rounded-md text-xs font-thin w-20 shadow-lg">
             {copied ? "Copied!" : "Copie stats"}
           </span>
         </span>

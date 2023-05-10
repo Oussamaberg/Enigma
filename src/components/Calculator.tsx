@@ -84,11 +84,11 @@ function Calculator({ userLevel, hardMode }) {
     }
   }, [[array], looseGame]);
 
-  console.log(gameStats);
+
   return (
     <>
       <Progress userLevel={level} />
-      <HardModeStats leftAttempts ={gameStats.tryLeft}/>
+      {hardMode && <HardModeStats leftAttempts ={gameStats.tryLeft}/>}
       
       <div className=" w-screen sm:w-96 h-screen py-20 ">
         <div className="h-40"></div>
