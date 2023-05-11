@@ -5,8 +5,9 @@ import Calculator from "./components/Calculator";
 import Help from "./components/Help";
 import { useEffect, useState } from "react";
 import Settings from "./components/Settings";
+import Faq from "./components/Faq";
 import { AnimatePresence } from "framer-motion";
-import Progress from "./components/Progress";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   // Show/Hide help window
@@ -21,7 +22,7 @@ function App() {
   var theme = sessionStorage.getItem("theme");
   var gameMode = sessionStorage.getItem("gameMode");
   var userLevel = sessionStorage.getItem("userLevel");
-  
+
   useEffect(() => {
     if (theme != null) {
       SetDarkMode(theme == "dark");
@@ -29,9 +30,8 @@ function App() {
     if (gameMode != null) {
       setHardMode(gameMode == "hard");
     }
-
   }, []);
-  
+
   const toggleHelp = () => {
     if (settings == true) {
       setSettings(false);
@@ -70,8 +70,14 @@ function App() {
       <div className="  min-h-screen  dark:bg-black dark:text-white ">
         <Navbar toggleHelp={toggleHelp} toggleSettings={toggleSettings} />
         <div className="  relative flex min-h-screen justify-center items-center">
-          
-          <Calculator userLevel={userLevel} hardMode={hardMode} />
+          <Routes>
+            <Route
+              path="/"
+              element={<Calculator userLevel={userLevel} hardMode={hardMode} />}
+            />
+            <Route path="/FAQ" element={<Faq />} />
+          </Routes>
+
           <AnimatePresence>
             {help && <Help toggleHelp={toggleHelp} />}
 
