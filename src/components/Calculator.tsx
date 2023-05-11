@@ -16,7 +16,11 @@ function Calculator({ userLevel, hardMode }) {
   const [looseGame, setLooseGame] = useState(false);
   // show/Hide success modal
   const [successModal, setSuccessModal] = useState(false);
-  const [gameStats, setGameStats] = useState({ time: Date.now(), tryNum: 0, tryLeft:6 });
+  const [gameStats, setGameStats] = useState({
+    time: Date.now(),
+    tryNum: 0,
+    tryLeft: 6,
+  });
   const goal = [1, 3, 3, 7];
 
   useEffect(() => {
@@ -29,7 +33,7 @@ function Calculator({ userLevel, hardMode }) {
     var tmpGameStates = {
       time: Date.now(),
       tryNum: 0,
-      tryLeft:6
+      tryLeft: 6,
     };
     setGameStats((obj) => ({
       ...obj,
@@ -64,6 +68,17 @@ function Calculator({ userLevel, hardMode }) {
       setLooseGame(true);
     }
   };
+  const reset = () => {
+    if (gameStats.tryLeft <= 0) {
+      setLooseGame(true);
+    }
+    setArray([0, 0, 0, 0]);
+    setGameStats({
+      ...gameStats,
+      tryNum: gameStats.tryNum + 1,
+      tryLeft: gameStats.tryLeft - 1,
+    });
+  };
   const audioPlayer = () => {
     const audio = new Audio(successSound);
     audio.play();
@@ -84,12 +99,11 @@ function Calculator({ userLevel, hardMode }) {
     }
   }, [[array], looseGame]);
 
-
   return (
     <>
       <Progress userLevel={level} />
-      {hardMode && <HardModeStats leftAttempts ={gameStats.tryLeft}/>}
-      
+      {hardMode && <HardModeStats leftAttempts={gameStats.tryLeft} />}
+
       <div className=" w-screen sm:w-96 h-screen py-20 ">
         <div className="h-40"></div>
         <div className="grid grid-cols-4 justify-items-center gap-1 border-b-2 border-gray-500 p-5 py-5 h-20 pb-24">
@@ -117,6 +131,7 @@ function Calculator({ userLevel, hardMode }) {
           {levels[level].digitArray.map((item, i) => (
             <CalculatorButton item={item} i={i} gateway={gateway} />
           ))}
+          <CalculatorButton item={"Reset"} i={9} gateway={reset} />
         </motion.div>
       </div>
       {successModal && (
@@ -127,10 +142,7 @@ function Calculator({ userLevel, hardMode }) {
         />
       )}
       {looseGame && (
-        <LooseModal
-          gameStats={gameStats}
-          looseModal={ToggleLooseModal}
-        />
+        <LooseModal gameStats={gameStats} looseModal={ToggleLooseModal} />
       )}
     </>
   );

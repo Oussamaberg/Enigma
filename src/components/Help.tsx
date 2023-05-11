@@ -6,7 +6,7 @@ function Help({toggleHelp}) {
         },
         show: {
           y: -100,
-          opacity: 0.95,
+          opacity: 1,
           transition: {
             duration: 0.3,
           },

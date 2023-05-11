@@ -6,7 +6,7 @@ function Settings({ darkModeChecked, hardModeChecked, toggleSettings, darkMode, 
     },
     show: {
       y: -100,
-      opacity: 0.95,
+      opacity: 1,
       transition: {
         duration: 0.3,
       },
@@ -22,7 +22,7 @@ function Settings({ darkModeChecked, hardModeChecked, toggleSettings, darkMode, 
       initial="hidden"
       animate="show"
       exit="exit"
-      className="flex flex-col font-mono absolute  w-screen h-3/5 sm:w-3/5 md:w-2/4 lg:w-2/5 backdrop-blur-md bg-white/30  divide-y divide-solide dark:divide-dashed shadow-2xl"
+      className="flex flex-col font-mono absolute  w-screen h-3/5 sm:w-3/5 md:w-2/4 lg:w-2/5 backdrop-blur-xl bg-white/30  divide-y divide-solide dark:divide-dashed shadow-2xl"
     >
       <div className="grid justify-items-end pr-5  pt-5 pb-10">
         <button onClick={toggleSettings}>
@@ -42,11 +42,11 @@ function Settings({ darkModeChecked, hardModeChecked, toggleSettings, darkMode, 
         </svg>
         </button>
       </div>
-      <div className="flex justify-center text-4xl text-slate-600 font-mono ">Settings</div>
+      <div className="flex justify-center text-4xl text-slate-600 dark:text-slate-200 font-mono ">Settings</div>
       <div className="flex justify-between p-5">
         <div className="flex flex-col">
           <span>Hard Mode</span>
-          <span className=" text-xs text-slate-600 "> the number of attempts will be limitied</span>
+          <span className=" text-xs text-slate-600 dark:text-slate-200 "> the number of attempts will be limitied</span>
         </div>
         
         <span>

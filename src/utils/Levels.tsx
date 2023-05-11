@@ -22,6 +22,14 @@ const updateGameState = (
   return "1";
 };
 
+const initialArray = (arr, init) =>{
+  if (arr.length == 0){
+    return init
+  }else{
+    return arr;
+  }
+}
+
 const level_1 = (
   number,
   index,
@@ -40,12 +48,9 @@ const level_1 = (
     setGameStats,
     hardMode
   );
-  var arr;
-  if (array.length == 0){
-    arr = [0,0,0,1]
-  }else{
-    arr = array;
-  }
+  var arr = initialArray(array,[0,0,0,1]);
+  arr = (arr.toString() == [0,0,0,0].toString())?[0,0,0,1]:arr
+ console.log(arr)
   var sum = parseInt(number) * parseInt(arr.join(''))
   var strsum = sum.toString()
   var newArray = strsum.split('').slice(0, 4)
@@ -73,25 +78,17 @@ const level_2 = (
     setGameStats,
     hardMode
   );
-  var arr;
-  if (array.length == 0){
-    arr = [0,0,0,1]
-  }else{
-    arr = array;
-  }
+  var arr = initialArray(array,[0,0,0,0]);
   var sum;
   if (index % 2 == 0){
     var sum = parseInt(number) * parseInt(arr.join(''))
   }else{
     var sum = parseInt(number) + parseInt(arr.join(''))
   }
-  
   var strsum = sum.toString()
-  console.log(strsum.split(''))
   var newArray = strsum.split('').slice(0, 4)
-  console.log()
   setArray(newArray);
-  setIndex((index) => index + 1);
+  setIndex((index) => setIndex(index + 5));
   return response;
 };
 
@@ -117,49 +114,72 @@ const level_3 = (
   setIndex((index) => index + 1);
   return response;
 };
+const level_4 = (
+  number,
+  index,
+  setIndex,
+  array,
+  setArray,
+  gameStats,
+  setGameStats,
+  hardMode
+) => {
+  var response = updateGameState(
+    index,
+    setIndex,
+    array,
+    gameStats,
+    setGameStats,
+    hardMode
+  );
+  var arr = initialArray(array, [0,0,0,0]);
+  var sum = parseInt(number) + parseInt(arr.join(''))
+  var strsum = sum.toString()
+  var newArray = strsum.split('').slice(0, 4)
+  
+  setArray(newArray);
+  setIndex(0);
+  return response;
+};
+
 
 
 const levels = [
   {
-    digitArray: ["1910", "1287", "1112", "1300", "3500", "1987", "1027", "5620", "1109", "2000"],
-    mecanics: level_1,
+    difficulty:"easy",
+    digitArray: ["71", "30", "97", "63", "91", "5", "50", "500", "2", "100"],
+    mecanics: level_3,
   },
   {
+    difficulty:"easy",
+    digitArray: ["71", "30", "97", "63", "91", "5", "50", "500", "2", "100"],
+    mecanics: level_4,
+  },
+  {
+    difficulty:"easy",
+    digitArray: ["711", "50", "95", "93", "27", "52", "48", "123", "196", "10"],
+    mecanics: level_4,
+  },
+  {
+    difficulty:"easy",
+    digitArray: ["16", "300", "97", "63", "199", "666", "50", "501", "5", "100"],
+    mecanics: level_4,
+  },
+  {
+    difficulty:"medium",
     digitArray: ["7", "30", "97", "63", "91", "5", "50", "500", "2", "100"],
     mecanics: level_2,
   },
   {
-    digitArray: [0.7, 1.8, 3.9, 0.5, 1.5, 1, 3, 2, 1, 3.5],
-    mecanics: level_3,
-  },
-  {
-    digitArray: [77, 87, 97, 63, 47, 51, 31, 21, 11, 10],
+    difficulty:"medium",
+    digitArray: ["1", "30", "97", "63", "191", "5", "50", "500", "2", "100"],
     mecanics: level_2,
   },
   {
-    digitArray: [77, 87, 97, 63, 47, 51, 31, 21, 11, 10],
-    mecanics: level_2,
-  },
-  {
-    digitArray: [77, 87, 97, 63, 47, 51, 31, 21, 11, 10],
-    mecanics: level_2,
-  },
-  {
-    digitArray: [77, 87, 97, 63, 47, 51, 31, 21, 11, 10],
-    mecanics: level_2,
-  },
-  {
-    digitArray: [77, 87, 97, 63, 47, 51, 31, 21, 11, 10],
-    mecanics: level_2,
-  },
-  {
-    digitArray: [1, 3, 5, 3, 11, 7, 17, 13, 19, 0],
-    mecanics: level_2,
-  },
-  {
-    digitArray: [77, 87, 97, 63, 47, 51, 31, 21, 11, 10],
-    mecanics: level_2,
-  },
+    difficulty:"hard",
+    digitArray: ["1910", "1287", "1112", "1300", "3500", "1987", "1027", "5620", "1109", "2000"],
+    mecanics: level_1,
+  }
 ];
 
 export { levels };
