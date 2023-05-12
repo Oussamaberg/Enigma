@@ -8,6 +8,7 @@ import Settings from "./components/Settings";
 import Faq from "./components/Faq";
 import { AnimatePresence } from "framer-motion";
 import { Route, Routes } from "react-router-dom";
+import Contact from "./components/Contact";
 
 function App() {
   // Show/Hide help window
@@ -76,6 +77,7 @@ function App() {
               element={<Calculator userLevel={userLevel} hardMode={hardMode} />}
             />
             <Route path="/FAQ" element={<Faq />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
 
           <AnimatePresence>
