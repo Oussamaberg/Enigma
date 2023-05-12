@@ -26,7 +26,7 @@ function Menu() {
       initial="hidden"
       animate="show"
       exit="exit"
-      className="absolute z-10 backdrop-blur-md dark:backdrop-blur-sm dark:bg-white/30 bg-white/30 bg-white text-gray-500 w-screen h-screen sm:w-96 pl-5 left-0 top-0  dark:text-yellow-50 "
+      className="absolute z-10 backdrop-blur-md dark:backdrop-blur-md dark:bg-white/30 bg-white/30 bg-white text-gray-500 w-screen h-screen sm:w-96 pl-5 left-0 top-0  dark:text-yellow-50 "
     >
       <ul className="text-justify">
         <li className="py-2 border-r-4 hover:border-black cursor-pointer hover:font-bold flex items-center transition ease-linear duration-500 ">
