@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       backgroundImage:{
-        'FAQ-bg':"url('./src/assets/img/img.jpg')"
+        'profile-bg':"url('./src/assets/img/img.jpg')"
       }
     },
   },

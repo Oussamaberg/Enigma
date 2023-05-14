@@ -36,6 +36,9 @@ function Menu() {
         <li className="py-2 border-r-4 hover:border-black cursor-pointer hover:font-bold flex items-center transition ease-linear duration-500 ">
           <Link to="/contact">Contact</Link>
         </li>
+        <li className="py-2 border-r-4 hover:border-black cursor-pointer hover:font-bold flex items-center transition ease-linear duration-500 ">
+          <Link to="/about">About</Link>
+        </li>
         <li>
           <div className=" font-mono text-2xl uppercase py-5 flex place-content-center ">
             {" "}

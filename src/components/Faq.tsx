@@ -9,7 +9,7 @@ function Faq() {
   return (
     <>
       <div className="absolute top-10 w-full sm:w-10/12 2xl:w-1/2 dark:bg-black   flex flex-col rounded-lg  shadow-2xl  gap-10 p-4">
-        <div className="relative pb-20">
+        <div className="relative pb-40">
           <motion.h1
             initial={{ x: 0, scale: 1 }}
             animate={{ x: [0, -10, 0, 10, 0], scale: [1, 1.01, 1] }}

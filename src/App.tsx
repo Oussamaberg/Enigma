@@ -1,5 +1,3 @@
-import Circle from "./components/Cirle";
-import Headings from "./components/Headings";
 import Navbar from "./components/Navbar";
 import Calculator from "./components/Calculator";
 import Help from "./components/Help";
@@ -9,6 +7,8 @@ import Faq from "./components/Faq";
 import { AnimatePresence } from "framer-motion";
 import { Route, Routes } from "react-router-dom";
 import Contact from "./components/Contact";
+import About from "./components/About";
+import Footer from "./components/Footer";
 
 function App() {
   // Show/Hide help window
@@ -78,6 +78,7 @@ function App() {
             />
             <Route path="/FAQ" element={<Faq />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/about" element={<About />} />
           </Routes>
 
           <AnimatePresence>
@@ -93,8 +94,11 @@ function App() {
               />
             )}
           </AnimatePresence>
-        </div>
+
+        </div> 
+        
       </div>
+     
     </div>
   );
 }

@@ -8,12 +8,14 @@ import successSound from "../assets/sound/success.wav";
 import Progress from "./Progress";
 import LooseModal from "./LooseModal";
 import HardModeStats from "./HardModeStats";
+import FinalModal from "./FinalModal";
 
 function Calculator({ userLevel, hardMode }) {
   const [index, setIndex] = useState(4);
   const [array, setArray] = useState([0, 0, 0, 0]);
   const [level, setLevel] = useState(0);
   const [looseGame, setLooseGame] = useState(false);
+  const [endGame, setEndGame] = useState(false);
   // show/Hide success modal
   const [successModal, setSuccessModal] = useState(false);
   const [gameStats, setGameStats] = useState({
@@ -21,7 +23,9 @@ function Calculator({ userLevel, hardMode }) {
     tryNum: 0,
     tryLeft: 6,
   });
+
   const goal = [1, 3, 3, 7];
+  let maxLevel = 6;
 
   useEffect(() => {
     if (userLevel != null) {
@@ -49,6 +53,11 @@ function Calculator({ userLevel, hardMode }) {
   const ToggleLooseModal = () => {
     setLooseGame(!looseGame);
     if (looseGame == true) resetGameStats();
+  };
+
+  const ToggleEndModal = () => {
+    setEndGame(!endGame);
+    if (endGame == true) resetGameStats();
   };
 
   const gateway = (e) => {
@@ -86,11 +95,18 @@ function Calculator({ userLevel, hardMode }) {
   useEffect(() => {
     if (array.toString() == goal.toString()) {
       audioPlayer();
-      ToggleSuccessModal();
-      setLevel((level) => level + 1);
-      //array.length = 0;
-      setArray([0, 0, 0, 0]);
-      sessionStorage.setItem("userLevel", (level + 1).toString());
+      if (level != maxLevel) {
+        ToggleSuccessModal();
+        setLevel((level) => level + 1);
+        //array.length = 0;
+        setArray([0, 0, 0, 0]);
+        sessionStorage.setItem("userLevel", (level + 1).toString());
+      } else {
+        ToggleEndModal()
+        setLevel(0);
+        setArray([0, 0, 0, 0]);
+        sessionStorage.setItem("userLevel", "0");
+      }
     }
     if (looseGame) {
       setArray([0, 0, 0, 0]);
@@ -141,9 +157,11 @@ function Calculator({ userLevel, hardMode }) {
           level={level}
         />
       )}
+      { endGame && <FinalModal gameStats={gameStats} finalModal={ToggleEndModal}/> }
       {looseGame && (
         <LooseModal gameStats={gameStats} looseModal={ToggleLooseModal} />
       )}
+
     </>
   );
 }

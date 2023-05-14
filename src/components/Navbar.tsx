@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Menu from "./Menu";
 import Hamburger from "./Hamburger";
 import HideMenu from "./HideMenu";
+import { Link } from "react-router-dom";
 function Navbar({toggleHelp, toggleSettings}) {
   const [toggleButton, setToggleButton] = useState(false);
   const hamburgerClick = () => {
@@ -17,9 +18,9 @@ function Navbar({toggleHelp, toggleSettings}) {
           <Hamburger hamburgerClick={hamburgerClick} />
         )}
 
-        <h1 className="md:hidden text-2xl ">Enigma</h1>
+        <h1 className="md:hidden text-2xl "><Link to={"/"}>Enigma</Link></h1>
       </div>
-      <h1 className=" hidden md:block text-2xl ">Enigma</h1>
+      <h1 className=" hidden md:block text-2xl "><Link to={"/"}>Enigma</Link></h1>
       <div className=" flex justify-between items-center">
         <button className="p-3" onClick={toggleSettings}>
           <svg
