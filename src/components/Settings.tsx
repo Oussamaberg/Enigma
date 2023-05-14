@@ -1,5 +1,19 @@
 import { motion } from "framer-motion";
-function Settings({ darkModeChecked, hardModeChecked, toggleSettings, darkMode, hardMode}) {
+interface settingTypes {
+  darkModeChecked: boolean;
+  hardModeChecked: boolean;
+  toggleSettings: () => void;
+  darkMode: () => void;
+  hardMode: () => void;
+}
+
+function Settings({
+  darkModeChecked,
+  hardModeChecked,
+  toggleSettings,
+  darkMode,
+  hardMode,
+}: settingTypes) {
   const container = {
     hidden: {
       opacity: 0,
@@ -12,7 +26,7 @@ function Settings({ darkModeChecked, hardModeChecked, toggleSettings, darkMode, 
       },
     },
     exit: {
-      y:0,
+      y: 0,
       opacity: 0,
     },
   };
@@ -22,36 +36,47 @@ function Settings({ darkModeChecked, hardModeChecked, toggleSettings, darkMode, 
       initial="hidden"
       animate="show"
       exit="exit"
-      className="flex flex-col font-mono absolute  w-screen h-3/5 sm:w-3/5 md:w-2/4 lg:w-2/5 backdrop-blur-xl bg-white/30  divide-y divide-solide dark:divide-dashed shadow-2xl"
+      className="flex flex-col font-mono absolute   top-60 w-screen h-max sm:w-3/5 md:w-2/4 lg:w-2/5 backdrop-blur-xl bg-white/30  divide-y divide-solide dark:divide-dashed shadow-2xl"
     >
       <div className="grid justify-items-end pr-5  pt-5 pb-10">
         <button onClick={toggleSettings}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-          className="w-6 h-6"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M6 18L18 6M6 6l12 12"
-          />
-        </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
         </button>
       </div>
-      <div className="flex justify-center text-4xl text-slate-600 dark:text-slate-200 font-mono ">Settings</div>
+      <div className="flex justify-center text-4xl text-slate-600 dark:text-slate-200 font-mono ">
+        Settings
+      </div>
       <div className="flex justify-between p-5">
         <div className="flex flex-col">
           <span>Hard Mode</span>
-          <span className=" text-xs text-slate-600 dark:text-slate-200 "> the number of attempts will be limitied</span>
+          <span className=" text-xs text-slate-600 dark:text-slate-200 ">
+            {" "}
+            the number of attempts will be limitied
+          </span>
         </div>
-        
+
         <span>
           <label className="relative inline-flex items-center cursor-pointer">
-            <input onChange={hardMode} type="checkbox" value="" className="sr-only peer" checked= {hardModeChecked} />
+            <input
+              onChange={hardMode}
+              type="checkbox"
+              value=""
+              className="sr-only peer"
+              checked={hardModeChecked}
+            />
             <div
               className="w-11 h-6 bg-gray-400 dark:bg-gray-400 peer-focus:outline-none  rounded-full peer  peer-checked:after:translate-x-full
                after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-100 dark:after:bg-slate-100 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all
@@ -64,7 +89,13 @@ function Settings({ darkModeChecked, hardModeChecked, toggleSettings, darkMode, 
         <span>Dark Theme</span>
         <span>
           <label className="relative inline-flex items-center cursor-pointer">
-            <input onChange={darkMode} type="checkbox" value="" className="sr-only peer" checked = {darkModeChecked} />
+            <input
+              onChange={darkMode}
+              type="checkbox"
+              value=""
+              className="sr-only peer"
+              checked={darkModeChecked}
+            />
             <div
               className="w-11 h-6 bg-gray-400 dark:bg-gray-400 peer-focus:outline-none  rounded-full peer  peer-checked:after:translate-x-full
                after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-100 dark:after:bg-slate-100 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all

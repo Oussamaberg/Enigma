@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import SareBox from "./ShareBox";
 
-function FinalModal({ gameStats, finalModal }) {
+function FinalModal({ gameStats, finalModal }:{gameStats:any, finalModal:()=>void}) {
   const [time, setTime] = useState(new Date());
 
   const container = {
@@ -31,9 +31,9 @@ function FinalModal({ gameStats, finalModal }) {
   }, []);
 
   const formatTime = () => {
-    var hour = time.getHours();
-    var min = time.getMinutes();
-    var sec = time.getSeconds();
+    var hour:any = time.getHours();
+    var min:any = time.getMinutes();
+    var sec:any = time.getSeconds();
     if (hour != 0) {
       if (hour < 10) {
         hour = "0" + hour + ":";
@@ -105,7 +105,7 @@ function FinalModal({ gameStats, finalModal }) {
               <motion.div variants={item} className=" ">
                 <button
                   onClick={finalModal}
-                  className=" bg-gradient-to-r from-emerald-500 to-green-900 hover:opacity-50 hover:scale-x-95 w-max  ring-1  rounded-md text-3xl shadow-xl transition ease-out duration-500 p-1 text-white mb-5 flex justify-center items-center gap-1"
+                  className="  hover:opacity-50 hover:scale-x-95 w-max  ring-1  rounded-md text-3xl shadow-xl transition ease-out duration-500 p-1 text-white mb-5 flex justify-center items-center gap-1"
                 >
                   <span>
                     <svg

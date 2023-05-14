@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-function Hamburger({ hamburgerClick }) {
+function Hamburger({ hamburgerClick }:{hamburgerClick:()=>void}) {
   const icon = {
     hidden: {
       opacity: 0,

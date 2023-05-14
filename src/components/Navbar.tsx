@@ -4,7 +4,13 @@ import Menu from "./Menu";
 import Hamburger from "./Hamburger";
 import HideMenu from "./HideMenu";
 import { Link } from "react-router-dom";
-function Navbar({toggleHelp, toggleSettings}) {
+
+interface navBarTypes {
+  toggleHelp: () => void;
+  toggleSettings: () => void
+}
+
+function Navbar({toggleHelp, toggleSettings}:navBarTypes) {
   const [toggleButton, setToggleButton] = useState(false);
   const hamburgerClick = () => {
     setToggleButton(!toggleButton);

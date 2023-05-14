@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-function TextAnimation2({ text }) {
+function TextAnimation2({ text }:{text:string}) {
   return (
     <div className="relative pb-20">
       <motion.h1

@@ -2,13 +2,14 @@ import { useScroll } from "framer-motion";
 import { motion } from "framer-motion";
 import bg from "../assets/img/img.jpg";
 import SlideToRight from "./animations/SlideToRight";
+import Footer from "./Footer";
 
 function Faq() {
   const { scrollYProgress } = useScroll();
   console.log(scrollYProgress);
   return (
     <>
-      <div className="absolute top-10 w-full sm:w-10/12 2xl:w-1/2 dark:bg-black   flex flex-col rounded-lg  shadow-2xl  gap-10 p-4">
+      <div className=" top-10 w-full sm:w-10/12 2xl:w-1/2 dark:bg-black   flex flex-col rounded-lg  shadow-2xl  gap-10 p-4">
         <div className="relative pb-40">
           <motion.h1
             initial={{ x: 0, scale: 1 }}
@@ -31,9 +32,9 @@ function Faq() {
           <div className="flex flex-col gap-4 p-4">
             <h4 className="text-2xl font-bold">Q: How do I play the game?</h4>
             <p>
-              A: The game is simple to play! Just tap on the screen to rotate
-              the tiles and connect them to form a complete path from the
-              starting point to the end point.
+              A: The game is simple to play! To display 1337 on the calculator,
+              try experimenting by taping on different buttons and observing how
+              they affect the logic of the device.
             </p>
           </div>
         </SlideToRight>
@@ -55,9 +56,9 @@ function Faq() {
               Q: Can I skip a puzzle if I get stuck?
             </h4>
             <p>
-              A: Yes, you can skip a puzzle if you are unable to solve it.
-              However, you will need to use a "Skip" token which can be earned
-              or purchased in the game.
+              A: No, but in the futur you can skip a puzzle if you are unable to
+              solve by using a "Skip" token which can be earned or purchased in
+              the game.
             </p>
           </div>
         </SlideToRight>
@@ -66,8 +67,8 @@ function Faq() {
           <div className="flex flex-col gap-4 p-4">
             <h4 className="text-2xl font-bold">Q: How do I earn tokens?</h4>
             <p>
-              A: Tokens can be earned by completing puzzles, watching ads, or by
-              purchasing them with real money in the game store.
+              A: Tokens can be earned by completing puzzles or by purchasing
+              them with real money in the game store.
             </p>
           </div>
         </SlideToRight>
@@ -75,11 +76,11 @@ function Faq() {
         <SlideToRight>
           <div className="flex flex-col gap-4 p-4">
             <h4 className="text-2xl font-bold">
-              Q: Can I connect the tiles diagonally?
+              Q: Where can i find hints for puzzles?
             </h4>
             <p>
-              A: No, you cannot connect the tiles diagonally. The tiles must be
-              connected horizontally or vertically.
+              A: There are no hints provided in the game, as solving challenges
+              without assistance is an integral part of the gameplay
             </p>
           </div>
         </SlideToRight>
@@ -100,11 +101,11 @@ function Faq() {
         <SlideToRight>
           <div className="flex flex-col gap-4 p-4">
             <h4 className="text-2xl font-bold">
-              Q: Is there a way to undo a move if I make a mistake?
+              Q: Is there a way to reset the desplay to "0"?
             </h4>
             <p>
-              A: Yes, you can undo your last move by tapping the "Undo" button
-              located on the screen.
+              A: yes, you can reset your by tapping the "Reset" button
+              located on the bottom of the screen.
             </p>
           </div>
         </SlideToRight>
@@ -113,7 +114,7 @@ function Faq() {
           <div className="flex flex-col gap-4 p-4">
             <h4 className="text-2xl font-bold">Q: Is the game free to play?</h4>
             <p>
-              A: Yes, the game is free to download and play. However, there are
+              A: Yes, the game is free to play. However, there are
               in-app purchases available if you wish to buy additional tokens or
               remove ads from the game.
             </p>
@@ -132,6 +133,18 @@ function Faq() {
             </p>
           </div>
         </SlideToRight>
+        <SlideToRight>
+          <div className="flex flex-col gap-4 p-4">
+            <h4 className="text-2xl font-bold">
+              Q: Are there different Ranks in the game?
+            </h4>
+            <p>
+              A: Yes, the game has different Ranks ranging from
+              "Iron" to "Grand Master".
+            </p>
+          </div>
+        </SlideToRight>
+        <Footer />
       </div>
     </>
   );

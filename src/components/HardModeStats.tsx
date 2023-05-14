@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-function HardModeStats({leftAttempts}) {
+function HardModeStats({leftAttempts}:{leftAttempts:number}) {
     const [show, setShow] = useState(false);
   return (
     <>

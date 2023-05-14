@@ -3,10 +3,11 @@ import { motion } from "framer-motion";
 import bg from "../assets/img/img.jpg";
 import TextAnimation1 from "./animations/TextAnimation1";
 import TextAnimation2 from "./animations/TextAnimation2";
+import Footer from "./Footer";
 
 function About() {
   return (
-    <div className=" absolute  top-10 w-full sm:w-10/12 2xl:w-1/2  flex flex-col dark:bg-black rounded-lg  shadow-2xl gap-20 p-4 dark:shadow-xl dark:shadow-cyan-500/50">
+    <div className="top-10 w-max sm:w-10/12 2xl:w-1/2  flex flex-col dark:bg-black rounded-lg  shadow-2xl gap-20 p-4 dark:shadow-xl dark:shadow-cyan-500/50">
       <div className=" border-b-2 ">
         <TextAnimation2 text={"About me"} />
       </div>
@@ -57,6 +58,7 @@ function About() {
       </motion.div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -9,8 +9,14 @@ import Progress from "./Progress";
 import LooseModal from "./LooseModal";
 import HardModeStats from "./HardModeStats";
 import FinalModal from "./FinalModal";
+import Footer from "./Footer";
 
-function Calculator({ userLevel, hardMode }) {
+interface CalculatorTypes {
+  userLevel : string|null, 
+  hardMode : boolean
+}
+
+function Calculator({ userLevel, hardMode }:CalculatorTypes) {
   const [index, setIndex] = useState(4);
   const [array, setArray] = useState([0, 0, 0, 0]);
   const [level, setLevel] = useState(0);
@@ -60,10 +66,11 @@ function Calculator({ userLevel, hardMode }) {
     if (endGame == true) resetGameStats();
   };
 
-  const gateway = (e) => {
+  const gateway = (e:any) => {
     var returnValue = "";
     var number = parseInt(e.target.value);
     returnValue = levels[level].mecanics(
+    {
       number,
       index,
       setIndex,
@@ -72,6 +79,7 @@ function Calculator({ userLevel, hardMode }) {
       gameStats,
       setGameStats,
       hardMode
+    }
     );
     if (returnValue == "0") {
       setLooseGame(true);
@@ -149,6 +157,7 @@ function Calculator({ userLevel, hardMode }) {
           ))}
           <CalculatorButton item={"Reset"} i={9} gateway={reset} />
         </motion.div>
+        <Footer />
       </div>
       {successModal && (
         <SuccessModal

@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import SareBox from "./ShareBox";
 import HardModeStats from "./HardModeStats";
 
-function Progress({ userLevel }) {
-  var userScore = sessionStorage.getItem("userScore");
+function Progress({ userLevel }:{userLevel:any}) {
+  var userScore:any = sessionStorage.getItem("userScore");
   var [score, setScore] = useState(0);
   const progressBar = [0, 1, 2, 3, 4, 5, 6];
   const rankTitle= ["Iron", "Silver", "Gold", "Diamond", "Challenger", "Master", "Grand Master"]
 
-  var rank = parseInt(userLevel);
+  var rank:number = parseInt(userLevel);
   //const [rank, setRank] = useState(0);
   //setRank(parseInt(userLevel))
 
@@ -21,7 +21,7 @@ function Progress({ userLevel }) {
     rank
   )}🟡`;
 
-  const setRankShape = (item, rank) => {
+  const setRankShape = (item:any, rank:number) => {
     if (item < rank) {
       return (
         <div key={item} className=" w-8 h-8 rounded-full  bg-blue-300 flex justify-center items-center ">

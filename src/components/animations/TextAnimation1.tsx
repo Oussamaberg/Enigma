@@ -2,7 +2,7 @@ import { useScroll } from "framer-motion";
 import { motion } from "framer-motion";
 import bg from "../assets/img/img.jpg";
 
-function TextAnimation1({ text }) {
+function TextAnimation1({ text }:{text:string}) {
   return (
     <div className="relative">
       <motion.div

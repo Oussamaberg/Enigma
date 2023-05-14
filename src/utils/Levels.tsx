@@ -1,11 +1,33 @@
+interface updateGameStateTypes{
+  index:number,
+  setIndex: (a:any)=>void,
+  array:Array<any>,
+  gameStats:any,
+  setGameStats: (a:any)=> void,
+  hardMode: boolean
+}
+
+interface levelTypes{
+  number: any,
+  index: number,
+  setIndex: (a:any)=>void,
+  array:Array<any>,
+  setArray:(a:Array<any>)=> void,
+  gameStats:any,
+  setGameStats:(a:any)=> void,
+  hardMode: boolean
+}
+
 const updateGameState = (
+  {
   index,
   setIndex,
   array,
   gameStats,
   setGameStats,
   hardMode
-) => {
+  }:updateGameStateTypes
+):string => {
   var maxAttempt = 6;
   if (hardMode && gameStats.tryNum >= maxAttempt) {
     return "0";
@@ -22,7 +44,7 @@ const updateGameState = (
   return "1";
 };
 
-const initialArray = (arr, init) =>{
+const initialArray = (arr:Array<any>, init:Array<number>) =>{
   if (arr.length == 0){
     return init
   }else{
@@ -31,6 +53,7 @@ const initialArray = (arr, init) =>{
 }
 
 const level_1 = (
+  {
   number,
   index,
   setIndex,
@@ -39,14 +62,17 @@ const level_1 = (
   gameStats,
   setGameStats,
   hardMode
+  }:levelTypes
 ) => {
   var response = updateGameState(
+    {
     index,
     setIndex,
     array,
     gameStats,
     setGameStats,
     hardMode
+    }
   );
   var arr = initialArray(array,[0,0,0,1]);
   arr = (arr.toString() == [0,0,0,0].toString())?[0,0,0,1]:arr
@@ -61,6 +87,7 @@ const level_1 = (
 };
 
 const level_2 = (
+  {
   number,
   index,
   setIndex,
@@ -69,17 +96,20 @@ const level_2 = (
   gameStats,
   setGameStats,
   hardMode
+  }:levelTypes
 ) => {
   var response = updateGameState(
+    {
     index,
     setIndex,
     array,
     gameStats,
     setGameStats,
     hardMode
+    }
   );
   var arr = initialArray(array,[0,0,0,0]);
-  var sum;
+  var sum:number;
   if (index % 2 == 0){
     var sum = parseInt(number) * parseInt(arr.join(''))
   }else{
@@ -88,11 +118,12 @@ const level_2 = (
   var strsum = sum.toString()
   var newArray = strsum.split('').slice(0, 4)
   setArray(newArray);
-  setIndex((index) => setIndex(index + 5));
+  setIndex((index:number) => index + 5);
   return response;
 };
 
 const level_3 = (
+  {
   number,
   index,
   setIndex,
@@ -101,20 +132,24 @@ const level_3 = (
   gameStats,
   setGameStats,
   hardMode
+  }:levelTypes
 ) => {
   var response = updateGameState(
+    {
     index,
     setIndex,
     array,
     gameStats,
     setGameStats,
     hardMode
+    }
   );
   setArray([...array, number % 10]);
-  setIndex((index) => index + 1);
+  setIndex((index:number) => index + 1);
   return response;
 };
 const level_4 = (
+  {
   number,
   index,
   setIndex,
@@ -123,14 +158,17 @@ const level_4 = (
   gameStats,
   setGameStats,
   hardMode
+  }:levelTypes
 ) => {
   var response = updateGameState(
+    {
     index,
     setIndex,
     array,
     gameStats,
     setGameStats,
     hardMode
+    }
   );
   var arr = initialArray(array, [0,0,0,0]);
   var sum = parseInt(number) + parseInt(arr.join(''))

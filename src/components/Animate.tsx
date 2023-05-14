@@ -1,7 +1,7 @@
 
 import { motion } from "framer-motion";
 
-function Animate({children}) {
+function Animate({children}:{children:any}) {
   const container = {
     hidden: {
       opacity: 0,

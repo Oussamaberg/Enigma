@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import SareBox from "./ShareBox";
 
-function LooseModal({ gameStats, looseModal }) {
+function LooseModal({ gameStats, looseModal }:{gameStats:any, looseModal:()=>void}) {
   const [time, setTime] = useState(new Date());
 
   const container = {
@@ -31,9 +31,9 @@ function LooseModal({ gameStats, looseModal }) {
   }, []);
 
   const formatTime = () => {
-    var hour = time.getHours();
-    var min = time.getMinutes();
-    var sec = time.getSeconds();
+    var hour:any = time.getHours();
+    var min:any = time.getMinutes();
+    var sec:any = time.getSeconds();
     if (hour != 0) {
       if (hour < 10) {
         hour = "0" + hour + ":";

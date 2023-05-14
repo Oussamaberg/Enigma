@@ -9,7 +9,7 @@ import {
   FacebookShareButton,
 } from "react-share";
 
-  function SareBox({ textToShare }) {
+  function SareBox({ textToShare }:{ textToShare:any }) {
   const [show, setShow] = useState(false);
   const [copied, setCopied] = useState(false);
   const URL = "https://enigma.io"

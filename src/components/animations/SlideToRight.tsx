@@ -1,6 +1,6 @@
 import { motion } from "framer-motion"
 
-function SlideToRight({children}){
+function SlideToRight({children}:{children:any}){
 return <motion.div
 initial={{ opacity:0 }}
 whileInView={{ opacity: 1 }}

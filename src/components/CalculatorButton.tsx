@@ -1,4 +1,11 @@
-function CalculatorButton({ item, i, gateway }) {
+
+interface CalculatorButtonTypes{
+  item: any,
+  i: number,
+  gateway: (e:any) => void
+}
+
+function CalculatorButton({ item, i, gateway }:CalculatorButtonTypes) {
 
   return (
     <input

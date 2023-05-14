@@ -1,4 +1,4 @@
-async function copyTextToClipboard(text) {
+async function copyTextToClipboard(text:any) {
     if ('clipboard' in navigator) {
       return await navigator.clipboard.writeText(text);
     } else {

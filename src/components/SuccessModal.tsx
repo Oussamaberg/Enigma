@@ -2,8 +2,14 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import SareBox from "./ShareBox";
 
-function SuccessModal({ gameStats, succesModal, level }) {
-  const [time, setTime] = useState(new Date());
+interface succesModalTypes {
+  gameStats: any;
+  succesModal: () => void;
+  level: number;
+}
+
+function SuccessModal({ gameStats, succesModal, level }: succesModalTypes) {
+  const [time, setTime]: any = useState(new Date());
 
   const container = {
     hidden: { opacity: 0 },
@@ -31,9 +37,9 @@ function SuccessModal({ gameStats, succesModal, level }) {
   }, []);
 
   const formatTime = () => {
-    var hour = time.getHours();
-    var min = time.getMinutes();
-    var sec = time.getSeconds();
+    var hour: any = time.getHours();
+    var min: any = time.getMinutes();
+    var sec: any = time.getSeconds();
     if (hour != 0) {
       if (hour < 10) {
         hour = "0" + hour + ":";
@@ -54,41 +60,44 @@ function SuccessModal({ gameStats, succesModal, level }) {
 
   const scoreCalculator = () => {
     const maxScore = 120;
-    var starsArray = [0,0,0,0,0];
+    var starsArray: Array<number> = [0, 0, 0, 0, 0];
     var n_try = gameStats.tryNum;
     var score = maxScore - (time / 1000) * 0.3 * n_try;
     score = score < 0 ? 0 : score;
     sessionStorage.setItem("userScore", score.toString());
-    var stars = parseInt(score / 20);
+    var stars: number = parseInt((score / 20).toString());
     for (var i = 0; i < stars; i++) {
       starsArray[i] = 1;
     }
-    return [starsArray, stars];
+    return { starsArray, stars };
   };
- const [starsArray, stars] = scoreCalculator();
-  var msg = `Level: ${level - 1}\nTime: ${formatTime()}\nTry: ${gameStats.tryNum}\n${"🌟".repeat(stars)}`
-  console.log("text ti share:" + msg)
+  const { starsArray, stars }: { starsArray: Array<number>; stars: number } =
+    scoreCalculator();
+  var msg = `Level: ${level - 1}\nTime: ${formatTime()}\nTry: ${
+    gameStats.tryNum
+  }\n${"🌟".repeat(stars)}`;
+  console.log("text ti share:" + msg);
 
-  const setStars = (item) =>{
-    if (item == 1){
+  const setStars = (item: any) => {
+    if (item == 1) {
       return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth="1"
-        stroke="currentColor"
-        className="w-12 h-12 fill-yellow-500"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
-        />
-      </svg>
-    )
-  }else{
-      return  (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth="1"
+          stroke="currentColor"
+          className="w-12 h-12 fill-yellow-500"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+          />
+        </svg>
+      );
+    } else {
+      return (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -103,10 +112,9 @@ function SuccessModal({ gameStats, succesModal, level }) {
             d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
           />
         </svg>
-      )
+      );
     }
-    
-  }
+  };
 
   return (
     <motion.div
@@ -120,7 +128,6 @@ function SuccessModal({ gameStats, succesModal, level }) {
         aria-labelledby="modal-title"
         role="dialog"
         aria-modal="true"
-        
       >
         <div className="fixed inset-0 z-10 overflow-y-auto mt-60">
           <div className="flex place-content-center p-4 text-center sm:items-center sm:p-0">
@@ -154,7 +161,7 @@ function SuccessModal({ gameStats, succesModal, level }) {
                   </span>
                 </div>
                 <div className="flex justify-center mt-5">
-                  {starsArray.map((item) => setStars(item))}
+                  {starsArray.map((item: any) => setStars(item))}
                 </div>
               </div>
               <SareBox textToShare={msg} />

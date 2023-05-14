@@ -22,7 +22,7 @@ function App() {
 
   var theme = sessionStorage.getItem("theme");
   var gameMode = sessionStorage.getItem("gameMode");
-  var userLevel = sessionStorage.getItem("userLevel");
+  var userLevel:string|null = sessionStorage.getItem("userLevel");
 
   useEffect(() => {
     if (theme != null) {
@@ -68,9 +68,9 @@ function App() {
 
   return (
     <div className={darkTheme ? "dark" : ""}>
-      <div className="  min-h-screen  dark:bg-black dark:text-white ">
+      <div className="  h-max dark:bg-black dark:text-white ">
         <Navbar toggleHelp={toggleHelp} toggleSettings={toggleSettings} />
-        <div className="  relative flex min-h-screen justify-center items-center">
+        <div className="  relative flex h-max  justify-center items-center dark:bg-black ">
           <Routes>
             <Route
               path="/"
