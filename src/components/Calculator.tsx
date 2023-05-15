@@ -82,6 +82,8 @@ function Calculator({ userLevel, hardMode, showScore }: CalculatorTypes) {
     });
     if (returnValue == "0") {
       setLooseGame(true);
+      setArray([0, 0, 0, 0]);
+      setIndex(4);
     }
   };
   const reset = () => {
@@ -115,12 +117,8 @@ function Calculator({ userLevel, hardMode, showScore }: CalculatorTypes) {
         sessionStorage.setItem("userLevel", "0");
       }
     }
-    if (looseGame) {
-      setArray([0, 0, 0, 0]);
-      setIndex(4);
-      //ToggleLooseModal();
-    }
-  }, [[array], looseGame]);
+  
+  }, [[array]]);
 
   return (
     <>
