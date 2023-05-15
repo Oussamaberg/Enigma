@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 interface settingTypes {
   darkModeChecked: boolean;
@@ -106,15 +107,15 @@ function Settings({
       </div>
       <div className="flex justify-between p-5">
         <span>Community</span>
-        <span className="text-sm text-sky-500">Twitter</span>
+        <span className="text-sm text-sky-500"><a href="twitter.com">Twitter</a></span>
       </div>
       <div className="flex justify-between p-5">
         <span>Questions?</span>
-        <span className="text-sm text-sky-500">FAQ</span>
+        <span className="text-sm text-sky-500"><Link to="/FAQ">FAQ</Link></span>
       </div>
       <div className="flex justify-between p-5">
         <span>Feed Back</span>
-        <span className="text-sm text-sky-500">Email</span>
+        <span className="text-sm text-sky-500"><a href="mailto:ossama.berghai@gmail.com">Email</a></span>
       </div>
     </motion.div>
   );

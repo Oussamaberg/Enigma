@@ -2,29 +2,40 @@ import { useEffect, useState } from "react";
 import SareBox from "./ShareBox";
 import HardModeStats from "./HardModeStats";
 
-function Progress({ userLevel }:{userLevel:any}) {
-  var userScore:any = sessionStorage.getItem("userScore");
+function Progress({ userLevel }: { userLevel: any }) {
+  var userScore: any = sessionStorage.getItem("userScore");
   var [score, setScore] = useState(0);
   const progressBar = [0, 1, 2, 3, 4, 5, 6];
-  const rankTitle= ["Iron", "Silver", "Gold", "Diamond", "Challenger", "Master", "Grand Master"]
+  const rankTitle = [
+    "Iron",
+    "Silver",
+    "Gold",
+    "Diamond",
+    "Challenger",
+    "Master",
+    "Grand Master",
+  ];
 
-  var rank:number = parseInt(userLevel);
+  var rank: number = parseInt(userLevel);
   //const [rank, setRank] = useState(0);
   //setRank(parseInt(userLevel))
 
   useEffect(() => {
-    if (userScore != null){
-      setScore((score) => (score + parseInt(userScore)))
+    if (userScore != null) {
+      setScore((score) => score + parseInt(userScore));
     }
-  },[userScore])
-  var msg = `Rank: ${rankTitle[rank]}\nScore: ${score}\nLevel: ${userLevel} \n${"🔵".repeat(
-    rank
-  )}🟡`;
+  }, [userScore]);
+  var msg = `Rank: ${
+    rankTitle[rank]
+  }\nScore: ${score}\nLevel: ${userLevel} \n${"🔵".repeat(rank)}🟡`;
 
-  const setRankShape = (item:any, rank:number) => {
+  const setRankShape = (item: any, rank: number) => {
     if (item < rank) {
       return (
-        <div key={item} className=" w-8 h-8 rounded-full  bg-blue-300 flex justify-center items-center ">
+        <div
+          key={item}
+          className=" w-8 h-8 rounded-full  bg-blue-300 flex justify-center items-center "
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -65,56 +76,57 @@ function Progress({ userLevel }:{userLevel:any}) {
   };
 
   return (
-    <div className="absolute top-4 place-self-auto w-full h-20  flex flex-col justify-center  items-center ">
-      
-      <div className=" font-mono text-sm p-1 mt-16 ">{rankTitle[rank]}</div>
+    <div className="absolute flex top-1  w-full    h-screen sm:h-20  flex-col justify-start  items-center sm:justify-center backdrop-blur-md bg-white/30 sm:bg-transparent">
+      <div className=" font-mono text-sm p-1 sm:mt-28 ">{rankTitle[rank]}</div>
       <div className="flex gap-4 justify-center items-center px-4">
         {progressBar.map((item) => setRankShape(item, rank))}
       </div>
-      <div className=" flex gap-4 p-4">
+      <div className=" flex flex-col gap-4 p-4 justify-center items-center">
         {" "}
-        <div className=" h-10 w-40 flex justify-center items-center bg-yellow-500 p-2 rounded-2xl text-blue-700 font-mono shadow-2xl text-sm hover:border-blue-700 hover:border-2 hover:text-yellow-500 hover:bg-white transition duration-500">
-          <span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"
-              />
-            </svg>
-          </span>
-          Score: {score}
-        </div>{" "}
-        <div className=" h-10 w-40 flex justify-center items-center bg-yellow-500 p-2 rounded-2xl text-blue-700 font-mono shadow-2xl text-sm hover:border-blue-700 hover:border-2 hover:text-yellow-500 hover:bg-white transition duration-500">
-          <span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"
-              />
-            </svg>
-          </span>
-          Level: {userLevel}
+        <div className="flex gap-4">
+          <div className=" h-10 w-40 flex justify-center items-center bg-yellow-500 p-2 rounded-2xl text-blue-700 font-mono shadow-2xl text-sm hover:border-blue-700 hover:border-2 hover:text-yellow-500 hover:bg-white transition duration-500">
+            <span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"
+                />
+              </svg>
+            </span>
+            Score: {score}
+          </div>{" "}
+          <div className=" h-10 w-40 flex justify-center items-center bg-yellow-500 p-2 rounded-2xl text-blue-700 font-mono shadow-2xl text-sm hover:border-blue-700 hover:border-2 hover:text-yellow-500 hover:bg-white transition duration-500">
+            <span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"
+                />
+              </svg>
+            </span>
+            Level: {userLevel}
+          </div>
         </div>
+
+      <SareBox textToShare={msg} />
       </div>
-      
-      <SareBox textToShare = {msg} />
-  
+
     </div>
   );
 }

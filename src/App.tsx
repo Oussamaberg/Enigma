@@ -20,6 +20,19 @@ function App() {
   // Activate/Deactivate hard mode
   const [hardMode, setHardMode] = useState(false);
 
+  const [showScore, setShowScore] = useState(false);
+  const [isMobile, setIsMobile] = useState(false)
+ 
+//choose the screen size 
+const handleResize = () => {
+  if (window.innerWidth < 640) {
+      setShowScore(false)
+  } else {
+    setShowScore(true)
+  }
+}
+ console.log(isMobile)
+
   var theme = sessionStorage.getItem("theme");
   var gameMode = sessionStorage.getItem("gameMode");
   var userLevel:string|null = sessionStorage.getItem("userLevel");
@@ -31,25 +44,36 @@ function App() {
     if (gameMode != null) {
       setHardMode(gameMode == "hard");
     }
+    window.addEventListener("resize", handleResize)
   }, []);
 
   const toggleHelp = () => {
     if (settings == true) {
       setSettings(false);
     }
-    //if (successModal == true) {
-    //setSuccessModal(false);
-    // }
+    if (showScore == true) {
+    setShowScore(false);
+    }
     setHelp(!help);
+  };
+
+  const toggleScore = () => {
+    if (settings == true) {
+      setSettings(false);
+    }
+    if (help == true) {
+    setHelp(false);
+    }
+    setShowScore(!showScore);
   };
 
   const toggleSettings = () => {
     if (help == true) {
       setHelp(false);
     }
-    //if (successModal == true) {
-    //  setSuccessModal(false);
-    //}
+    if (showScore == true) {
+      setShowScore(false);
+      }
     setSettings(!settings);
   };
 
@@ -69,12 +93,12 @@ function App() {
   return (
     <div className={darkTheme ? "dark" : ""}>
       <div className="  h-max dark:bg-black dark:text-white ">
-        <Navbar toggleHelp={toggleHelp} toggleSettings={toggleSettings} />
+        <Navbar toggleHelp={toggleHelp} toggleSettings={toggleSettings} toggleScore={toggleScore} />
         <div className="  relative flex h-max  justify-center items-center dark:bg-black ">
           <Routes>
             <Route
               path="/"
-              element={<Calculator userLevel={userLevel} hardMode={hardMode} />}
+              element={<Calculator userLevel={userLevel} hardMode={hardMode} showScore={showScore} />}
             />
             <Route path="/FAQ" element={<Faq />} />
             <Route path="/contact" element={<Contact />} />

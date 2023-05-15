@@ -1,7 +1,7 @@
 function Footer() {
     const date = new Date();
   return (
-    <div className=" flex flex-col  bg-white dark:bg-black w-full  mt-auto justify-center  items-center border-t-2 gap-2  p-10 text-xs mb-2">
+    <div className=" flex flex-col  bg-white dark:bg-black w-full  mt-5 justify-center  items-center border-t-2 gap-2  p-10 text-xs mb-2">
         <div> 
               Enigma {date.getFullYear()} Created with ❤️ using:
         </div>

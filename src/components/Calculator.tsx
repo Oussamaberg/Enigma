@@ -12,11 +12,12 @@ import FinalModal from "./FinalModal";
 import Footer from "./Footer";
 
 interface CalculatorTypes {
-  userLevel : string|null, 
-  hardMode : boolean
+  userLevel: string | null;
+  hardMode: boolean;
+  showScore: boolean;
 }
 
-function Calculator({ userLevel, hardMode }:CalculatorTypes) {
+function Calculator({ userLevel, hardMode, showScore }: CalculatorTypes) {
   const [index, setIndex] = useState(4);
   const [array, setArray] = useState([0, 0, 0, 0]);
   const [level, setLevel] = useState(0);
@@ -66,11 +67,10 @@ function Calculator({ userLevel, hardMode }:CalculatorTypes) {
     if (endGame == true) resetGameStats();
   };
 
-  const gateway = (e:any) => {
+  const gateway = (e: any) => {
     var returnValue = "";
     var number = parseInt(e.target.value);
-    returnValue = levels[level].mecanics(
-    {
+    returnValue = levels[level].mecanics({
       number,
       index,
       setIndex,
@@ -78,9 +78,8 @@ function Calculator({ userLevel, hardMode }:CalculatorTypes) {
       setArray,
       gameStats,
       setGameStats,
-      hardMode
-    }
-    );
+      hardMode,
+    });
     if (returnValue == "0") {
       setLooseGame(true);
     }
@@ -110,7 +109,7 @@ function Calculator({ userLevel, hardMode }:CalculatorTypes) {
         setArray([0, 0, 0, 0]);
         sessionStorage.setItem("userLevel", (level + 1).toString());
       } else {
-        ToggleEndModal()
+        ToggleEndModal();
         setLevel(0);
         setArray([0, 0, 0, 0]);
         sessionStorage.setItem("userLevel", "0");
@@ -125,11 +124,13 @@ function Calculator({ userLevel, hardMode }:CalculatorTypes) {
 
   return (
     <>
-      <Progress userLevel={level} />
+      {showScore && <Progress userLevel={level} />}
+     
+
       {hardMode && <HardModeStats leftAttempts={gameStats.tryLeft} />}
 
-      <div className=" w-screen sm:w-96 h-screen py-20 ">
-        <div className="h-40"></div>
+      <div className=" w-screen sm:w-96 h-screen sm:pt-10 ">
+        <div className="hidden sm:block h-40"></div>
         <div className="grid grid-cols-4 justify-items-center gap-1 border-b-2 border-gray-500 p-5 py-5 h-20 pb-24">
           {array.map((digit, j) => (
             <DigitDisplay digit={digit} i={j} />
@@ -166,11 +167,12 @@ function Calculator({ userLevel, hardMode }:CalculatorTypes) {
           level={level}
         />
       )}
-      { endGame && <FinalModal gameStats={gameStats} finalModal={ToggleEndModal}/> }
+      {endGame && (
+        <FinalModal gameStats={gameStats} finalModal={ToggleEndModal} />
+      )}
       {looseGame && (
         <LooseModal gameStats={gameStats} looseModal={ToggleLooseModal} />
       )}
-
     </>
   );
 }
