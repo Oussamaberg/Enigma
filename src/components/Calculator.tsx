@@ -20,7 +20,7 @@ interface CalculatorTypes {
 function Calculator({ userLevel, hardMode, showScore }: CalculatorTypes) {
   const [index, setIndex] = useState(4);
   const [array, setArray] = useState([0, 0, 0, 0]);
-  const [level, setLevel] = useState(0);
+  const [level, setLevel] = useState(6);
   const [looseGame, setLooseGame] = useState(false);
   const [endGame, setEndGame] = useState(false);
   // show/Hide success modal
@@ -125,7 +125,6 @@ function Calculator({ userLevel, hardMode, showScore }: CalculatorTypes) {
   return (
     <>
       {showScore && <Progress userLevel={level} />}
-     
 
       {hardMode && <HardModeStats leftAttempts={gameStats.tryLeft} />}
 
@@ -133,7 +132,7 @@ function Calculator({ userLevel, hardMode, showScore }: CalculatorTypes) {
         <div className="hidden sm:block h-40"></div>
         <div className="grid grid-cols-4 justify-items-center gap-1 border-b-2 border-gray-500 p-5 py-5 h-20 pb-24">
           {array.map((digit, j) => (
-            <DigitDisplay digit={digit} i={j} />
+            <DigitDisplay digit={digit} key={j} />
           ))}
         </div>
         <motion.div
@@ -154,9 +153,9 @@ function Calculator({ userLevel, hardMode, showScore }: CalculatorTypes) {
           className="grid grid-cols-3 gap-2 mt-10  px-4"
         >
           {levels[level].digitArray.map((item, i) => (
-            <CalculatorButton item={item} i={i} gateway={gateway} />
+            <CalculatorButton item={item} key={i} i={i} gateway={gateway} />
           ))}
-          <CalculatorButton item={"Reset"} i={9} gateway={reset} />
+          <CalculatorButton item={"Reset"} key={10} i={10} gateway={reset} />
         </motion.div>
         <Footer />
       </div>

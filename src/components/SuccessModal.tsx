@@ -76,12 +76,12 @@ function SuccessModal({ gameStats, succesModal, level }: succesModalTypes) {
   var msg = `Level: ${level - 1}\nTime: ${formatTime()}\nTry: ${
     gameStats.tryNum
   }\n${"🌟".repeat(stars)}`;
-  console.log("text ti share:" + msg);
 
-  const setStars = (item: any) => {
+  const setStars = (item: any, i:number) => {
     if (item == 1) {
       return (
         <svg
+          key={i}
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -99,6 +99,7 @@ function SuccessModal({ gameStats, succesModal, level }: succesModalTypes) {
     } else {
       return (
         <svg
+          key={i}
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -129,7 +130,7 @@ function SuccessModal({ gameStats, succesModal, level }: succesModalTypes) {
         role="dialog"
         aria-modal="true"
       >
-        <div className="fixed inset-0 z-10 overflow-y-auto mt-60">
+        <div className="fixed inset-0 z-10 overflow-y-auto mt-10 sm:mt-60">
           <div className="flex place-content-center p-4 text-center sm:items-center sm:p-0">
             <div className="backdrop-blur-md bg-white/30   h-max w-screen sm:w-7/12 md:w-6/12 lg:w-4/12 border-1 rounded-lg flex flex-col  justify-center items-center shadow-2xl p-10">
               <motion.div
@@ -161,21 +162,35 @@ function SuccessModal({ gameStats, succesModal, level }: succesModalTypes) {
                   </span>
                 </div>
                 <div className="flex justify-center mt-5">
-                  {starsArray.map((item: any) => setStars(item))}
+                  {starsArray.map((item: any,i:number) => setStars(item, i))}
                 </div>
               </div>
               <SareBox textToShare={msg} />
-              <motion.div variants={item} className="h-32">
+              <motion.div variants={item} className="h-20">
                 <h3 className="p-2 font-bold text-2xl">Good Job</h3>
-
-                <p>Congratulation you have unlocked the next level 🎉</p>
               </motion.div>
               <motion.div variants={item} className="">
                 <button
                   onClick={succesModal}
-                  className=" bg-gradient-to-r from-emerald-500 to-green-500 hover:opacity-50 hover:scale-x-95 w-full  ring-1  rounded-md text-3xl shadow-xl transition ease-out duration-500 p-3"
+                  className=" bg-gradient-to-r from-emerald-500 to-green-500 hover:opacity-50 hover:scale-x-95  flex items-center gap-2 ring-1  rounded-md text-3xl shadow-xl transition ease-out duration-500 px-20 "
                 >
-                  Next
+                  <span>Next</span>
+                  <span className="animate-ping ">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                      className="w-4 h-4"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5"
+                      />
+                    </svg>
+                  </span>
                 </button>
               </motion.div>
             </div>

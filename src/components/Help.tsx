@@ -25,7 +25,7 @@ function Help({ toggleHelp }:helpTypes) {
       initial="hidden"
       animate="show"
       exit="exit"
-      className="flex flex-col absolute  w-screen h-max top-60 sm:w-3/5 md:w-2/4 lg:w-2/5 backdrop-blur-md bg-white/30  shadow-2xl "
+      className="flex flex-col absolute  w-screen h-max   top-28  sm:top-60 sm:w-3/5 md:w-2/4 lg:w-2/5 backdrop-blur-md bg-white/30  shadow-2xl "
     >
       <div className=" grid justify-items-end p-5">
         <button onClick={toggleHelp}>

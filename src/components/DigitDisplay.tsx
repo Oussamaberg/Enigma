@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-function DigitDisplay({ digit, i }:{digit:number, i:number}) {
+function DigitDisplay({ digit }: { digit: number }) {
   const digitContainer = {
     hidden: { y: 20, opacity: 0 },
     show: {
@@ -21,7 +21,6 @@ function DigitDisplay({ digit, i }:{digit:number, i:number}) {
     <AnimatePresence>
       <motion.span
         variants={digitContainer}
-        key={i}
         initial="hidden"
         animate="show"
         exit="exit"

@@ -37,7 +37,7 @@ function Settings({
       initial="hidden"
       animate="show"
       exit="exit"
-      className="flex flex-col font-mono absolute   top-60 w-screen h-max sm:w-3/5 md:w-2/4 lg:w-2/5 backdrop-blur-xl bg-white/30  divide-y divide-solide dark:divide-dashed shadow-2xl"
+      className="flex flex-col font-mono absolute   top-28 sm:top-60 w-screen h-max sm:w-3/5 md:w-2/4 lg:w-2/5 backdrop-blur-xl bg-white/30  divide-y divide-solide dark:divide-dashed shadow-2xl"
     >
       <div className="grid justify-items-end pr-5  pt-5 pb-10">
         <button onClick={toggleSettings}>

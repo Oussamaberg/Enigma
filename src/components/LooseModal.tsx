@@ -65,7 +65,7 @@ function LooseModal({ gameStats, looseModal }:{gameStats:any, looseModal:()=>voi
         role="dialog"
         aria-modal="true"
       >
-        <div className="fixed inset-0 z-10 overflow-y-auto mt-60 ">
+        <div className="fixed inset-0 z-10 overflow-y-auto mt-14 sm:mt-60 ">
           <div className="flex place-content-center  text-center sm:items-center sm:p-0">
             <div className="backdrop-blur-md bg-red/30   h-80 w-screen sm:w-7/12 md:w-6/12 lg:w-4/12 border-2 dark:border-slate-800 rounded-lg flex flex-col  justify-center items-center shadow-2xl p-10">
               <motion.div

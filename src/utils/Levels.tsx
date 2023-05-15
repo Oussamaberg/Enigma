@@ -76,7 +76,6 @@ const level_1 = (
   );
   var arr = initialArray(array,[0,0,0,1]);
   arr = (arr.toString() == [0,0,0,0].toString())?[0,0,0,1]:arr
- console.log(arr)
   var sum = parseInt(number) * parseInt(arr.join(''))
   var strsum = sum.toString()
   var newArray = strsum.split('').slice(0, 4)

@@ -20,23 +20,19 @@ function App() {
   // Activate/Deactivate hard mode
   const [hardMode, setHardMode] = useState(false);
 
-  const [showScore, setShowScore] = useState(false);
-  const [isMobile, setIsMobile] = useState(false)
- 
-//choose the screen size 
-const handleResize = () => {
-  if (window.innerWidth < 640) {
-      setShowScore(false)
-  } else {
-    setShowScore(true)
-  }
-}
- console.log(isMobile)
+  const [showScore, setShowScore] = useState(true);
 
+  //choose the screen size
+  const handleResize = () => {
+    if (window.innerWidth < 640) {
+      setShowScore(false);
+    } else {
+      setShowScore(true);
+    }
+  };
   var theme = sessionStorage.getItem("theme");
   var gameMode = sessionStorage.getItem("gameMode");
-  var userLevel:string|null = sessionStorage.getItem("userLevel");
-
+  var userLevel: string | null = sessionStorage.getItem("userLevel");
   useEffect(() => {
     if (theme != null) {
       SetDarkMode(theme == "dark");
@@ -44,16 +40,17 @@ const handleResize = () => {
     if (gameMode != null) {
       setHardMode(gameMode == "hard");
     }
-    window.addEventListener("resize", handleResize)
+    //show progress Component if the window is bigger than 640px.
+    handleResize();
+    // listen for window resizing in order to show/hide the progress Component:
+    window.addEventListener("resize", handleResize);
   }, []);
 
   const toggleHelp = () => {
     if (settings == true) {
       setSettings(false);
     }
-    if (showScore == true) {
-    setShowScore(false);
-    }
+
     setHelp(!help);
   };
 
@@ -62,7 +59,7 @@ const handleResize = () => {
       setSettings(false);
     }
     if (help == true) {
-    setHelp(false);
+      setHelp(false);
     }
     setShowScore(!showScore);
   };
@@ -71,9 +68,7 @@ const handleResize = () => {
     if (help == true) {
       setHelp(false);
     }
-    if (showScore == true) {
-      setShowScore(false);
-      }
+
     setSettings(!settings);
   };
 
@@ -93,12 +88,22 @@ const handleResize = () => {
   return (
     <div className={darkTheme ? "dark" : ""}>
       <div className="  h-max dark:bg-black dark:text-white ">
-        <Navbar toggleHelp={toggleHelp} toggleSettings={toggleSettings} toggleScore={toggleScore} />
+        <Navbar
+          toggleHelp={toggleHelp}
+          toggleSettings={toggleSettings}
+          toggleScore={toggleScore}
+        />
         <div className="  relative flex h-max  justify-center items-center dark:bg-black ">
           <Routes>
             <Route
               path="/"
-              element={<Calculator userLevel={userLevel} hardMode={hardMode} showScore={showScore} />}
+              element={
+                <Calculator
+                  userLevel={userLevel}
+                  hardMode={hardMode}
+                  showScore={showScore}
+                />
+              }
             />
             <Route path="/FAQ" element={<Faq />} />
             <Route path="/contact" element={<Contact />} />
@@ -118,11 +123,8 @@ const handleResize = () => {
               />
             )}
           </AnimatePresence>
-
-        </div> 
-        
+        </div>
       </div>
-     
     </div>
   );
 }

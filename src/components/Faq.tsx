@@ -6,7 +6,6 @@ import Footer from "./Footer";
 
 function Faq() {
   const { scrollYProgress } = useScroll();
-  console.log(scrollYProgress);
   return (
     <>
       <div className=" top-10 w-full sm:w-10/12 2xl:w-1/2 dark:bg-black   flex flex-col rounded-lg  shadow-2xl  gap-10 p-4">
@@ -104,8 +103,8 @@ function Faq() {
               Q: Is there a way to reset the desplay to "0"?
             </h4>
             <p>
-              A: yes, you can reset your by tapping the "Reset" button
-              located on the bottom of the screen.
+              A: yes, you can reset your by tapping the "Reset" button located
+              on the bottom of the screen.
             </p>
           </div>
         </SlideToRight>
@@ -114,9 +113,9 @@ function Faq() {
           <div className="flex flex-col gap-4 p-4">
             <h4 className="text-2xl font-bold">Q: Is the game free to play?</h4>
             <p>
-              A: Yes, the game is free to play. However, there are
-              in-app purchases available if you wish to buy additional tokens or
-              remove ads from the game.
+              A: Yes, the game is free to play. However, there are in-app
+              purchases available if you wish to buy additional tokens or remove
+              ads from the game.
             </p>
           </div>
         </SlideToRight>
@@ -139,8 +138,8 @@ function Faq() {
               Q: Are there different Ranks in the game?
             </h4>
             <p>
-              A: Yes, the game has different Ranks ranging from
-              "Iron" to "Grand Master".
+              A: Yes, the game has different Ranks ranging from "Iron" to "Grand
+              Master".
             </p>
           </div>
         </SlideToRight>
