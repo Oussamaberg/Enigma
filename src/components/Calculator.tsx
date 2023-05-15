@@ -20,7 +20,7 @@ interface CalculatorTypes {
 function Calculator({ userLevel, hardMode, showScore }: CalculatorTypes) {
   const [index, setIndex] = useState(4);
   const [array, setArray] = useState([0, 0, 0, 0]);
-  const [level, setLevel] = useState(6);
+  const [level, setLevel] = useState(0);
   const [looseGame, setLooseGame] = useState(false);
   const [endGame, setEndGame] = useState(false);
   // show/Hide success modal
