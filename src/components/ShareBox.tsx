@@ -12,7 +12,7 @@ import {
   function SareBox({ textToShare }:{ textToShare:any }) {
   const [show, setShow] = useState(false);
   const [copied, setCopied] = useState(false);
-  const URL = "https://enigma.io"
+  const URL = "https://main--ephemeral-vacherin-602970.netlify.app"
   const msg = `${textToShare}\n${URL}`
   const isCopied = () => {
     copyTextToClipboard(msg)
