@@ -34,6 +34,7 @@ function Calculator({ userLevel, hardMode, showScore }: CalculatorTypes) {
   const goal = [1, 3, 3, 7];
   let maxLevel = 6;
 
+  
   useEffect(() => {
     if (userLevel != null) {
       setLevel(parseInt(userLevel));
@@ -80,6 +81,7 @@ function Calculator({ userLevel, hardMode, showScore }: CalculatorTypes) {
       setGameStats,
       hardMode,
     });
+  
     if (returnValue == "0") {
       setLooseGame(true);
       setArray([0, 0, 0, 0]);
@@ -87,14 +89,12 @@ function Calculator({ userLevel, hardMode, showScore }: CalculatorTypes) {
     }
   };
   const reset = () => {
-    if (gameStats.tryLeft <= 0) {
-      setLooseGame(true);
-    }
     setArray([0, 0, 0, 0]);
+    setIndex(0);
     setGameStats({
       ...gameStats,
       tryNum: gameStats.tryNum + 1,
-      tryLeft: gameStats.tryLeft - 1,
+      tryLeft: (hardMode)?gameStats.tryLeft - 1:gameStats.tryLeft,
     });
   };
   const audioPlayer = () => {
@@ -122,8 +122,10 @@ function Calculator({ userLevel, hardMode, showScore }: CalculatorTypes) {
 
   return (
     <>
+    <AnimatePresence>
       {showScore && <Progress userLevel={level} />}
 
+</AnimatePresence>
       {hardMode && <HardModeStats leftAttempts={gameStats.tryLeft} />}
 
       <div className=" w-screen sm:w-96 h-screen sm:pt-10 ">

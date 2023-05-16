@@ -8,10 +8,10 @@ import { Link } from "react-router-dom";
 interface navBarTypes {
   toggleHelp: () => void;
   toggleSettings: () => void;
-  toggleScore:() => void
+  toggleScore: () => void;
 }
 
-function Navbar({ toggleHelp, toggleSettings,toggleScore }: navBarTypes) {
+function Navbar({ toggleHelp, toggleSettings, toggleScore }: navBarTypes) {
   const [toggleButton, setToggleButton] = useState(false);
   const hamburgerClick = () => {
     setToggleButton(!toggleButton);
@@ -34,9 +34,30 @@ function Navbar({ toggleHelp, toggleSettings,toggleScore }: navBarTypes) {
         <Link to={"/"}>Enigma</Link>
       </h1>
       <div className=" flex justify-between items-center gap-3 mt-2">
+        <Link to={"/"}>
         <button
           className="p-2 bg-slate-200 dark:bg-slate-800 rounded-lg sm:bg-transparent sm:hidden"
-          onClick={ toggleScore }
+          
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+            />
+          </svg>
+        </button>
+        </Link>
+        <button
+          className="p-2 bg-slate-200 dark:bg-slate-800 rounded-lg sm:bg-transparent sm:hidden"
+          onClick={toggleScore}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

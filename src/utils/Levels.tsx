@@ -18,6 +18,32 @@ interface levelTypes{
   hardMode: boolean
 }
 
+const updateGameState1 = (
+  {
+  index,
+  setIndex,
+  array,
+  gameStats,
+  setGameStats,
+  hardMode
+  }:updateGameStateTypes
+):string => {
+  var maxAttempt = 6;
+  if (hardMode && gameStats.tryNum >= maxAttempt) {
+    return "0";
+  }
+  if (array.length === 4) {
+    array.length = 0;
+    setIndex(0);
+    setGameStats({
+      ...gameStats,
+      tryNum: gameStats.tryNum + 1,
+      tryLeft: gameStats.tryLeft - 1,
+    });
+  }
+  return "1";
+};
+
 const updateGameState = (
   {
   index,
@@ -133,7 +159,7 @@ const level_3 = (
   hardMode
   }:levelTypes
 ) => {
-  var response = updateGameState(
+  var response = updateGameState1(
     {
     index,
     setIndex,

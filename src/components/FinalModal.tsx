@@ -96,7 +96,7 @@ function FinalModal({
                     Time {formatTime()}
                   </span>
                   <span className=" flex flex-col rounded-xl p-2 font-mono text-4xl hover:-translate-y-1 transition duration-1000">
-                    <div>Try </div> <div>{gameStats.tryNum}</div>
+                    <div>Attempts </div> <div>{gameStats.tryNum}</div>
                   </span>
                 </div>
                 <div className="flex justify-center text-5xl font-extrabold items-center bg-clip-text text-transparent bg-gradient-to-r from-emerald-700 to-green-600 dark:to-white">

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import SareBox from "./ShareBox";
-import HardModeStats from "./HardModeStats";
+import { motion } from "framer-motion";
 
 function Progress({ userLevel }: { userLevel: any }) {
   var userScore: any = sessionStorage.getItem("userScore");
@@ -76,7 +76,16 @@ function Progress({ userLevel }: { userLevel: any }) {
   };
 
   return (
-    <div className="absolute flex top-1  w-full    h-screen sm:h-20  flex-col justify-start  items-center sm:justify-center backdrop-blur-md bg-white/30 sm:bg-transparent">
+    <motion.div 
+    initial={{y:-500, opacity:0}}
+    animate={{y:0, opacity:1}}
+    transition={{
+      duration:0.5
+    }}
+    exit={
+      {y:-500, opacity:0}  
+  }
+    className="absolute flex top-1  w-full    h-screen sm:h-20  flex-col justify-start  items-center sm:justify-center backdrop-blur-md bg-white/30 sm:bg-transparent">
       <div className=" font-mono text-sm p-1 sm:mt-28 ">{rankTitle[rank]}</div>
       <div className="flex gap-4 justify-center items-center px-4">
         {progressBar.map((item) => setRankShape(item, rank))}
@@ -123,11 +132,9 @@ function Progress({ userLevel }: { userLevel: any }) {
             Level: {userLevel}
           </div>
         </div>
-
-      <SareBox textToShare={msg} />
+        <SareBox textToShare={msg} />
       </div>
-
-    </div>
+    </motion.div>
   );
 }
 export default Progress;

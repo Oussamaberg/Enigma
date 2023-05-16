@@ -8,7 +8,6 @@ import { AnimatePresence } from "framer-motion";
 import { Route, Routes } from "react-router-dom";
 import Contact from "./components/Contact";
 import About from "./components/About";
-import Footer from "./components/Footer";
 
 function App() {
   // Show/Hide help window
